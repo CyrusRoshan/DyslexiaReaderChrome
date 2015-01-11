@@ -1,10 +1,10 @@
 # Dyslexia Reader Chrome
-# (Incomplete)
+### (Incomplete)
 
 Dyslexia Reader as a Google Chrome extension. Demonstration:
 
 
-<img src="http://gameandlearn.org/images/dyslexia_reader_chrome_img.png">
+<img src="http://gameandlearn.org/images/dyslexia_reader_chrome_img_large.png" width="600px">
  
  <br>
 <blockquote>
