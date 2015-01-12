@@ -1,0 +1,22 @@
+body {
+  width: 150px;
+  overflow-x: hidden;
+}
+
+.mainContainer {
+  height: 190px;
+  padding: 10px;
+  background-color: rgb(81, 81, 81);
+}
+
+.statusContainer{
+  height: 50px;
+  padding: 5px;
+  background-color: white;
+}
+
+.buttonContainer{
+  height:120px;
+  padding: 5px;
+  background-color: rgb(142, 142, 142);
+}
