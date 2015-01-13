@@ -28,6 +28,12 @@
     "https://*/*"
   ],
 
+"content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["js/background.js"]
+    }
+  ],
 
   "manifest_version": 2
 }
