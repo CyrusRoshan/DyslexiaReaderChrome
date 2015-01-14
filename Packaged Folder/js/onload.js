@@ -1,0 +1,5 @@
+function onload(){
+  firstStorage();
+  checkStatus();
+
+}
