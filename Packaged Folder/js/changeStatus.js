@@ -5,7 +5,11 @@ function changeStatus(){
   }
   else if(enabled==false) {
     enabled = true;
-    document.getElementById("Status").innerHTML="Disabled";
     checkStatus();
   }
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+  enabled = true;
+  document.querySelector('button').addEventListener('click', changeStatus);
+});

@@ -4,7 +4,7 @@ body {
 }
 
 .mainContainer {
-  height: 190px;
+  height: 100%;
   padding: 10px;
   background-color: rgb(81, 81, 81);
 }
@@ -15,8 +15,36 @@ body {
   background-color: white;
 }
 
+.status{
+  color: white;
+  text-align: center;
+  font-size: 30px;
+}
+
 .buttonContainer{
   height:120px;
   padding: 5px;
   background-color: rgb(142, 142, 142);
 }
+  .buttonContainer button{
+    cursor: pointer;
+    border: 2px solid white;
+    background: none;
+    padding: 0px;
+    overflow: hidden;
+    width: 120px;
+    height: 120px;
+    border-radius: 25%;
+  }
+    .buttonContainer button .powerButton{
+      width: 100%;
+    }
+
+.questionContainer
+  {
+    background: rgb(199, 199, 199);
+    padding: 5px;
+  }
+
+
+

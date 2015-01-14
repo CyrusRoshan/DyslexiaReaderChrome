@@ -3,3 +3,5 @@ function onload(){
   checkStatus();
 
 }
+
+window.onload = onload;

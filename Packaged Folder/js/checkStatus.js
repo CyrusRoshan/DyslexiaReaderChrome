@@ -1,18 +1,16 @@
-function changeStatus(){
-  if (enabled==true){
-    document.getElementById("status").innerHTML="Enabled";
-    document.getElementById("statusContainer").background-color="rgb(166, 59, 59)";
-  else
-    document.getElementById("status").innerHTML="Disabled";
-    document.getElementById("statusContainer").background-color="rgb(55, 98, 57)";
+function checkStatus(){
+  if (enabled===true){
+    $(".status").html("Enabled");
+    $(".statusContainer").css("background-color", "rgb(24, 150, 71)");
+    $(".powerButton").attr("src","images/enabled.png");
+    //$(".question").html("Always view" + domainName + "with DRC");
+    $(".questionContainer").show("fast");
+  }
+  else if (enabled===false){
+    $(".status").html("Disabled");
+    $(".statusContainer").css("background-color", "rgb(102, 102, 102)");
+    $(".powerButton").attr("src","images/disabled.png");
+    $(".question").html("");
+    $(".questionContainer").hide("fast");
   }
 }
-
-
-
-/*
-rgb(166, 59, 59) background color for status: on
-rgb(55, 98, 57) background color for status: off
-
-
-*/
