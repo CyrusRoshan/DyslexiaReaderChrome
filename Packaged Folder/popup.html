@@ -8,7 +8,7 @@
     <script src="js/checkStatus.js"></script>
     <script src="js/changeStatus.js"></script>
     <script src="js/styleChanger.js"></script>
-
+    <script src="js/radioChecker.js"></script>
     <!-- keep onload.js as the last script -->
     <script src="js/onload.js"></script>
   </head>
@@ -23,8 +23,9 @@
       <div class="questionContainer">
           <div class="question"></div>
           <form>
-            <input type="radio" name="Enabled" class="Enabled" value="Enabled" checked><br>
-            <input type="radio" name="Disabled" class="Disabled" value="Disabled"><br>
+            <input type="radio" name="savedSetting" class="radioButton" id="Enabled" value="Enabled">Always Enabled<br>
+            <input type="radio" name="savedSetting" class="radioButton" id="Disabled" value="Disabled">Always Disabled<br>
+            <input type="radio" name="savedSetting" class="radioButton" id="Neither" value="Neither" checked>Neither<br>
           </form>
       </div>
     </div>
