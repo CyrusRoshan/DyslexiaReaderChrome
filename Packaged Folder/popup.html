@@ -9,6 +9,7 @@
     <script src="js/changeStatus.js"></script>
     <script src="js/styleChanger.js"></script>
     <script src="js/radioChecker.js"></script>
+    <script src="js/urlChecker.js"></script>
     <!-- keep onload.js as the last script -->
     <script src="js/onload.js"></script>
   </head>
@@ -18,15 +19,18 @@
         <div class="status"></div>
       </div>
       <div class="buttonContainer">
-        <button type="button"><img class="powerButton" src=""></button>
+        <button class="actualButton" type="button"><img class="powerButton" src=""></button>
       </div>
       <div class="questionContainer">
-          <div class="question"></div>
+          <div class="intro">Dyslexia Reader Chrome will be</div>
           <form>
-            <input type="radio" name="savedSetting" class="radioButton" id="Enabled" value="Enabled">Always Enabled<br>
-            <input type="radio" name="savedSetting" class="radioButton" id="Disabled" value="Disabled">Always Disabled<br>
-            <input type="radio" name="savedSetting" class="radioButton" id="Neither" value="Neither" checked>Neither<br>
+            <label for="Enabled"><input type="radio" name="savedSetting" class="radioButton" id="Enabled" value="Enabled">Always Enabled<br></label>
+            <label for="Disabled"><input type="radio" name="savedSetting" class="radioButton" id="Disabled" value="Disabled">Always Disabled<br></label>
+            <label for="Neither"><input type="radio" name="savedSetting" class="radioButton" id="Neither" value="Neither">Neither<br></label>
           </form>
+          <div class="question">
+            <div class="domain"></div>
+          </div>
       </div>
     </div>
   </body>

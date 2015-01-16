@@ -1,11 +1,13 @@
-function onload(){
-  firstStorage();
-  checkStatus();
+//Declare Global Variables
+window.status = "";
+window.domain = "";
+window.dataStorage = {};
+window.enabled = "";
+window.currentStatus = "";
 
-}
-chrome.tabs.getSelected(function (tabs) {
-  var url = tabs.url;
-  var split = url.split("/");
-  window.domain = split[0] + "//" + split[2];
+
+document.addEventListener('DOMContentLoaded', function () {
+
+    urlChecker();
+
 });
-window.onload = onload;
