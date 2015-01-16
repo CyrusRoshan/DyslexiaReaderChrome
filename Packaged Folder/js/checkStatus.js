@@ -20,13 +20,13 @@ function checkStatus() {
     $(".questionContainer").hide("fast");
   }
   if ( status == "Enabled") {
-
+    Enabled.checked = true;
   }
   else if ( status == "Disabled") {
-
+    Disabled.checked = true;
   }
   else if ( status == "Neither") {
-
+    Neither.checked = true;
   }
   saveDomainValues();
 }
