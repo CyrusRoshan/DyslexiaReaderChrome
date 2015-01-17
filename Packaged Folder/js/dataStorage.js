@@ -7,7 +7,7 @@ function saveDomainValues(domain, status) {
     currentStatus = window.currentStatus;
     dataStorage["currentStatus"] = currentStatus;
     dataStorage[domain] = status;
-    if (status == "Enabled" || status == "Disabled") {
+    if (status == "Disabled") {
       chrome.storage.sync.set(dataStorage);
     }
     else {
@@ -21,14 +21,14 @@ function saveAndLog(domain, status) {
     currentStatus = window.currentStatus;
     dataStorage["currentStatus"] = currentStatus;
     dataStorage[domain] = status;
-    if (status == "Enabled" || status == "Disabled") {
+    if (status == "Disabled") {
       chrome.storage.sync.set(dataStorage, function(){
         loadDomainValues();
       });
     }
     else {
       delete dataStorage[domain];
-      chrome.storage.sync.set(dataStorage, function(){
+      chrome.storage.sync.remove(domain, function(){
         loadDomainValues();
       });
     }
@@ -57,11 +57,7 @@ function configureDomainValues() {
 
   enabled = currentStatus;
 
-  if (window.dataStorage[domain] == "Enabled") {
-      status = "Enabled";
-  }
-
-  else if (window.dataStorage[domain] == "Disabled") {
+  if (window.dataStorage[domain] == "Disabled") {
       status = "Disabled";
   }
 
@@ -84,7 +80,7 @@ function saveDomain(status, saveDomainValues){
     chrome.tabs.getSelected(function (tabs) {
       var url = tabs.url;
       var split = url.split("/");
-      domain = split[0] + "//" + split[2];
+      domain = split[1] + split[2];
       window.status = status;
       window.domain = domain;
       saveAndLog(domain, status);

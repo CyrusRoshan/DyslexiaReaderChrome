@@ -19,14 +19,17 @@ function checkStatus() {
     $(".powerButton").attr("src", "images/disabled.png");
     $(".questionContainer").hide("fast");
   }
-  if ( status == "Enabled") {
-    Enabled.checked = true;
-  }
-  else if ( status == "Disabled") {
+  if ( status == "Disabled") {
     Disabled.checked = true;
   }
   else if ( status == "Neither") {
     Neither.checked = true;
+  }
+  if (enabled === true && status != "Disabled"){
+    cssInject();
+  }
+  else {
+    cssRemove();
   }
   saveDomainValues();
 }
