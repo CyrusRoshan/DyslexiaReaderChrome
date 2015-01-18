@@ -1,14 +1,34 @@
 
 function cssInject(){
+  chrome.tabs.executeScript(null, { file: "js/jquery-2.1.3.min.js" });
   chrome.tabs.executeScript({
     code: '$("*").css("font-family", "Courier", "important"); $("*").css("font-size", "18pt", "important"); $("*").css("background-color", "#fbfbfb", "important"); $("*").css("line-height", "1.5", "important")'
   });
 }
 function cssRemove(){
+  chrome.tabs.executeScript(null, { file: "js/jquery-2.1.3.min.js" });
   chrome.tabs.executeScript({
     code: '$("*").css("font-family", ""); $("*").css("font-size", ""); $("*").css("background-color", ""); $("*").css("line-height", "")'
   });
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*
 Font-family: Courier
