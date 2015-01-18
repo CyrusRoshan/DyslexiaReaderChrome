@@ -70,6 +70,7 @@ function configureDomainValues() {
   }
   else {
       enabled = false;
+      window.dataStorage["currentStatus"] == false;
   }
   checkStatus();
 }

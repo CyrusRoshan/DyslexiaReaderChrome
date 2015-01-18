@@ -71,7 +71,7 @@ function fourth(){
     cssInject();
   }
   else {
-    cssRemove();
+    //cssRemove();
   }
 }
 
