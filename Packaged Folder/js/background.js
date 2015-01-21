@@ -8,6 +8,7 @@ window.fontFamilyChecked = true;
 window.fontSizeChecked = true;
 window.backgroundColorChecked = true;
 window.lineHeightChecked = true;
+window.ran = false;
 
 //Done>perfect I guess. I'm bad with asynchronous functions.
 //the following functions are basically the same as the functions for popup.html

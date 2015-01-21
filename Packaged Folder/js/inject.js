@@ -23,19 +23,21 @@ function cssInject(){
         'elements[i].setAttribute("style", "' + style + '");' +
       '}'
   });
-
+  window.ran = true;
   //applys these css changes to every element currently on the page.
 }
 
 function cssRemove(){
-  chrome.tabs.executeScript({
-    code:
-      'var elements = document.getElementsByTagName("*");' +
-      'for (var i=0; i < elements.length; i++) {' +
-        'elements[i].setAttribute("style", "");' +
-      '}'
-  });
-
+  if(window.ran === true){
+    chrome.tabs.executeScript({
+      code:
+        'var elements = document.getElementsByTagName("*");' +
+        'for (var i=0; i < elements.length; i++) {' +
+          'elements[i].setAttribute("style", "");' +
+        '}'
+    });
+    window.ran = false;
+  }
   //removes the values from the elements
 }
 
