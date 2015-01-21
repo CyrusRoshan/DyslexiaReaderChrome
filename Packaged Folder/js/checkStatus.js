@@ -33,3 +33,6 @@ function checkStatus() {
   }
   saveDomainValues();
 }
+
+//This basically just checks the values on the popup.html and changes it accordingly.
+//It also calls cssInject or cssRemove based on these values.

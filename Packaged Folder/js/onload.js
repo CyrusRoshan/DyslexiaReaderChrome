@@ -4,6 +4,10 @@ window.domain = "";
 window.dataStorage = {};
 window.enabled = "";
 window.currentStatus = "";
+window.fontFamilyChecked = true;
+window.fontSizeChecked = true;
+window.backgroundColorChecked = true;
+window.lineHeightChecked = true;
 
 //Done>perfect I guess. I'm bad with asynchronous functions.
 

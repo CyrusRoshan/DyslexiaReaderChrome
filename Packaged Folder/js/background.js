@@ -4,18 +4,15 @@ window.domain = "";
 window.dataStorage = {};
 window.enabled = "";
 window.currentStatus = "";
+window.fontFamilyChecked = true;
+window.fontSizeChecked = true;
+window.backgroundColorChecked = true;
+window.lineHeightChecked = true;
 
 //Done>perfect I guess. I'm bad with asynchronous functions.
-
-/*
-  "content_scripts": [
-      {
-        "matches": ["<all_urls>"],
-        "js": [" "]
-      }
-    ],
-*/
-
+//the following functions are basically the same as the functions for popup.html
+//except there wasn't a need to import all of the other scripts if we're only
+//going to read the values.
 
 function first(){
   chrome.tabs.getSelected(function (tabs) {
@@ -71,7 +68,7 @@ function fourth(){
     cssInject();
   }
   else {
-    //cssRemove();
+    cssRemove();
   }
 }
 

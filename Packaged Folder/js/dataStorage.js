@@ -1,5 +1,6 @@
 function clearDomainValues(){
   chrome.storage.sync.clear();
+  //Removes all values from chrome storage sync.
 }
 
 function saveDomainValues(domain, status) {
@@ -14,6 +15,8 @@ function saveDomainValues(domain, status) {
       delete dataStorage[domain];
       chrome.storage.sync.set(dataStorage);
     }
+    //saves the value to sync if the value for the current domain is "disabled"
+    //otherwise it just removes the value to save sync.storage space since it defaults to "enabled"
 }
 
 function saveAndLog(domain, status) {
@@ -32,6 +35,8 @@ function saveAndLog(domain, status) {
         loadDomainValues();
       });
     }
+    //basically the same thing as saveDomainValues but also calls loadDomainValues
+    //because async functions have to be kept in line
 }
 
 
@@ -41,6 +46,7 @@ function loadDomainValues() {
       window.dataStorage = data;
       configureDomainValues();
     });
+    //gets the values from chrome's sync storage
 
 }
 
@@ -73,6 +79,9 @@ function configureDomainValues() {
       window.dataStorage["currentStatus"] == false;
   }
   checkStatus();
+  //gets individual values from chrome's sync storage (which was saved as dataStorage earlier)
+  //then it sets variable values based on dataStorage's values and calls checkStatus to
+  //set them visually and call the needed function from inject.js
 }
 
 
@@ -86,5 +95,7 @@ function saveDomain(status, saveDomainValues){
       window.domain = domain;
       saveAndLog(domain, status);
     });
+    //saves the current domain and its value (enabled/disabled)
+    //then passes those values to saveAndLog
 }
 
