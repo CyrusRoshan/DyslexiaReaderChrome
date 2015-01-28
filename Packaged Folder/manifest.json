@@ -4,7 +4,7 @@
   "version": "1.0",
 
   "background": {
-    "scripts": ["js/inject.js", "js/background.js"],
+    "page": "background.html",
     "persistent": false
   },
 
@@ -33,7 +33,7 @@
   "content_scripts": [
       {
         "matches": ["<all_urls>"],
-        "js": ["js/inject.js"]
+        "js": ["js/contentScript.js"]
       }
     ],
 

@@ -17,6 +17,7 @@ window.ran = false;
 
 function first(){
   chrome.tabs.getSelected(function (tabs) {
+    window.ran = false;
     var url = tabs.url;
     var split = url.split("/");
     window.domain = split[1] + split[2];
@@ -24,6 +25,10 @@ function first(){
   });
 }
 
+  var elements = document.getElementsByTagName("*");
+  for (var i=0; i < elements.length; i++) {
+    elements[i].setAttribute("style", "' + style + '");
+  }
 
 function second() {
     chrome.storage.sync.get(function(data) {
@@ -73,7 +78,23 @@ function fourth(){
   }
 }
 
+
+chrome.runtime.onMessage.addListener(
+  function(){
+    if (modified == "true") {
+      alert("modified message recieved");
+      fourth();
+    }
+  }
+);
+
 chrome.tabs.onUpdated.addListener(function() {
   first();
 });
+
+chrome.tabs.onActivated.addListener(function() {
+  first();
+});
+
+
 
