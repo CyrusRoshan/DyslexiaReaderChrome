@@ -4,9 +4,13 @@ function clearDomainValues(){
 }
 
 function saveDomainValues(domain, status) {
+    dataStorage["fontFamilyChecked"] = window.fontFamilyChecked;
+    dataStorage["fontSizeChecked"] = window.fontSizeChecked;
+    dataStorage["backgroundColorChecked"] = window.backgroundColorChecked;
+    dataStorage["lineHeightChecked"] = window.lineHeightChecked;
+    dataStorage["refresh"] = window.refresh;
 
-    currentStatus = window.currentStatus;
-    dataStorage["currentStatus"] = currentStatus;
+    dataStorage["currentStatus"] = window.currentStatus;
     dataStorage[domain] = status;
     if (status == "Disabled") {
       chrome.storage.sync.set(dataStorage);
@@ -21,7 +25,12 @@ function saveDomainValues(domain, status) {
 
 function saveAndLog(domain, status) {
 
-    currentStatus = window.currentStatus;
+    dataStorage["fontFamilyChecked"] = window.fontFamilyChecked;
+    dataStorage["fontSizeChecked"] = window.fontSizeChecked;
+    dataStorage["backgroundColorChecked"] = window.backgroundColorChecked;
+    dataStorage["lineHeightChecked"] = window.lineHeightChecked;
+    dataStorage["refresh"] = window.refresh;
+
     dataStorage["currentStatus"] = currentStatus;
     dataStorage[domain] = status;
     if (status == "Disabled") {

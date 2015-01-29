@@ -8,6 +8,10 @@ window.fontFamilyChecked = true;
 window.fontSizeChecked = true;
 window.backgroundColorChecked = true;
 window.lineHeightChecked = true;
+chrome.tabs.getSelected(null, function(tab){
+  var id=tab.id
+  window.ran[id]=false;
+})
 window.ran = false;
 window.timeup = true;
 window.queued = false;

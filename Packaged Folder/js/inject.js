@@ -1,5 +1,11 @@
 
 function cssInject(){
+
+  fontFamilyChecked = window.dataStorage["fontFamilyChecked"];
+  fontSizeChecked = window.dataStorage["fontSizeChecked"];
+  backgroundColorChecked = window.dataStorage["backgroundColorChecked"];
+  lineHeightChecked = window.dataStorage["lineHeightChecked"];
+
   var style = "";
   if (fontFamilyChecked === true) {
     style += "font-family: Courier !important;"
