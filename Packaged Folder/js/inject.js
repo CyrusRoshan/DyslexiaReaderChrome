@@ -1,12 +1,41 @@
 
 function cssInject(){
+  checkCss();
+  chrome.tabs.executeScript({
+    code:
+      'var elements = document.getElementsByTagName("*");' +
+      'for (var i=0; i < elements.length; i++) {' +
+        'elements[i].setAttribute("style", "' + style + '");' +
+      '}'
+  });
+  window.ran = true;
+  //applies these css changes to every element currently on the page.
+}
 
-  fontFamilyChecked = window.dataStorage["fontFamilyChecked"];
-  fontSizeChecked = window.dataStorage["fontSizeChecked"];
-  backgroundColorChecked = window.dataStorage["backgroundColorChecked"];
-  lineHeightChecked = window.dataStorage["lineHeightChecked"];
+function cssRemove(){
+  checkCss();
+    chrome.tabs.executeScript({
+      code:
+        'var html = document.getElementsByTagName("html")[0];' +
+        'var htmlCss = html.style.cssText;' +
+        'if (htmlCss.indexOf("!important") > -1){' +
+          'var elements = document.getElementsByTagName("*");' +
+          'for (var i=0; i < elements.length; i++) {' +
+            'elements[i].setAttribute("style", "");' +
+          '}' +
+        '}'
+    });
+  //removes the values from the elements
+  //some webpages have inline styling, and this will mess with pages since it removes the inline styling.
+  //to counteract this, the inline styling is only removed if the inline styling on an element contains "!important"
+}
 
-  var style = "";
+function checkCss(){
+  window.fontFamilyChecked = window.dataStorage["fontFamilyChecked"];
+  window.fontSizeChecked = window.dataStorage["fontSizeChecked"];
+  window.backgroundColorChecked = window.dataStorage["backgroundColorChecked"];
+  window.lineHeightChecked = window.dataStorage["lineHeightChecked"];
+  window.style = "";
   if (fontFamilyChecked === true) {
     style += "font-family: Courier !important;"
   };
@@ -19,59 +48,4 @@ function cssInject(){
   if (lineHeightChecked === true) {
     style += "line-height: 1.5 !important;"
   };
-  //this section seems pretty efficient. No need to load jquery on tab load now.
-  //basically just adds text to the style variable based on the checkboxes in the options page
-
-  chrome.tabs.executeScript({
-    code:
-      'var elements = document.getElementsByTagName("*");' +
-      'for (var i=0; i < elements.length; i++) {' +
-        'elements[i].setAttribute("style", "' + style + '");' +
-      '}'
-  });
-  window.ran = true;
-  //applys these css changes to every element currently on the page.
 }
-
-function cssRemove(){
-  if(window.ran === true){
-    chrome.tabs.executeScript({
-      code:
-        'var elements = document.getElementsByTagName("*");' +
-        'for (var i=0; i < elements.length; i++) {' +
-          'elements[i].setAttribute("style", "");' +
-        '}'
-    });
-    window.ran = false;
-  }
-  //removes the values from the elements
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-Font-family: Courier
-Font-size :18pt
-Column Width of 65 Characters (removed, doesn't look good on all pages)
-Font Color: #0f0f0f
-Background-color: #fbfbfb
-Line-height: 1.5
-*/
-
-

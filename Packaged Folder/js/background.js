@@ -105,6 +105,7 @@ chrome.tabs.onUpdated.addListener(function() {
 
 chrome.tabs.onActivated.addListener(function() {
   first();
+
 });
 
 
