@@ -4,12 +4,6 @@ function clearDomainValues(){
 }
 
 function saveDomainValues(domain, status) {
-    dataStorage["fontFamilyChecked"] = window.fontFamilyChecked;
-    dataStorage["fontSizeChecked"] = window.fontSizeChecked;
-    dataStorage["backgroundColorChecked"] = window.backgroundColorChecked;
-    dataStorage["lineHeightChecked"] = window.lineHeightChecked;
-    dataStorage["refresh"] = window.refresh;
-
     dataStorage["currentStatus"] = window.currentStatus;
     dataStorage[domain] = status;
     if (status == "Disabled") {
@@ -24,13 +18,6 @@ function saveDomainValues(domain, status) {
 }
 
 function saveAndLog(domain, status) {
-
-    dataStorage["fontFamilyChecked"] = window.fontFamilyChecked;
-    dataStorage["fontSizeChecked"] = window.fontSizeChecked;
-    dataStorage["backgroundColorChecked"] = window.backgroundColorChecked;
-    dataStorage["lineHeightChecked"] = window.lineHeightChecked;
-    dataStorage["refresh"] = window.refresh;
-
     dataStorage["currentStatus"] = currentStatus;
     dataStorage[domain] = status;
     if (status == "Disabled") {

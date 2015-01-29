@@ -1,27 +1,31 @@
 <!doctype html>
 <html>
   <head>
-    <link href="css/popupStyle.css" rel='stylesheet' type='text/css' />
+    <link href="css/optionsStyle.css" rel='stylesheet' type='text/css' />
     <title>DRC Options</title>
-    <script src="js/jquery-2.1.3.min.js"></script>
-    <script src="js/dataStorage.js"></script>
     <script src="js/options.js"></script>
   </head>
   <body>
-    <div class="mainOptions">
-      <div div class="mainTitleContainer">
-        <div class="mainTitle">Options:</div>
+    <div class="mainContainer">
+      <div div class="titleContainer">
+        <div class="title">Options:</div>
       </div>
       <div class="optionContainer">
-          <form>
-            <label for="fontFamily"><input type="radio" name="savedOption" class="checkbox" id="fontFamily" value="fontFamily">Change Font Family<br></label>
-            <label for="fontSize"><input type="radio" name="savedOption" class="checkbox" id="fontSize" value="fontSize">Change Font Size<br></label>
-            <label for="backgroundColor"><input type="radio" name="savedOption" class="checkbox" id="fontSize" value="fontSize">Change Font Size<br></label>
-            <label for="lineHeight"><input type="radio" name="savedOption" class="checkbox" id="fontSize" value="fontSize">Change Font Size<br></label>
-            <div> add input for refresh</div>
-          </form>
-          <div class="message">Options will autosave when checked/unchecked.</div>
+        <div class="basic">Basic:</div>
+        <form>
+          <label for="fontFamily"><input type="checkbox" name="savedOption" class="checkbox" id="fontFamily" value="fontFamily">Change font family to Courier<br></label>
+          <label for="fontSize"><input type="checkbox" name="savedOption" class="checkbox" id="fontSize" value="fontSize">Change font size to 18pt<br></label>
+          <label for="backgroundColor"><input type="checkbox" name="savedOption" class="checkbox" id="backgroundColor" value="backgroundColor">Change background color to #fbfbfb<br></label>
+          <label for="lineHeight"><input type="checkbox" name="savedOption" class="checkbox" id="lineHeight" value="lineHeight">Change line height to 1.5<br></label>
+        </form>
       </div>
+      <div class="textContainer">
+        <div class="advanced">Advanced:</div>
+        <form>
+          <div>Time to wait before injecting css upon new element creation. <label for="refresh"><input type="text" name="refresh" class="refresh" id="refresh" value="" placeholder="Default is 200ms"><br></label></div>
+        </form>
+      </div>
+      <div class="message">These options autosave when a value is changed.</div>
     </div>
   </body>
 </html>
