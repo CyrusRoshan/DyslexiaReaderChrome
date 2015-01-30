@@ -19,7 +19,7 @@ What it does by default*:
 \* can be changed in settings
 </blockquote><br>
 
-There are options to enable/disable the extension both by domain and globally.
+There are options to enable/disable the extension both by domain and globally, along with enabling/disabling any of the changed attributes.
 
 This is a project [for Game and Learn](http://gameandlearn.org), suggestions are welcome.
 
