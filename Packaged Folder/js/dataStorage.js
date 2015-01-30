@@ -47,10 +47,7 @@ function loadDomainValues() {
 }
 
 function configureDomainValues() {
-  dataStorage = window.dataStorage;
-  domain = window.domain;
-  currentStatus = window.currentStatus;
-
+  window.refresh = dataStorage["currentStatus"];
   dataStorage["currentStatus"] = window.dataStorage["currentStatus"];
   dataStorage[domain] = window.dataStorage[domain];
 
@@ -58,7 +55,11 @@ function configureDomainValues() {
 
 
   enabled = currentStatus;
-
+  if (window.refresh < 1){
+    window.refresh = 200;
+    dataStorage["refresh"] = 200;
+    chrome.storage.sync.set(dataStorage);
+  }
   if (window.dataStorage[domain] == "Disabled") {
       status = "Disabled";
   }
