@@ -17,6 +17,25 @@ window.timeup = true;
 window.queued = false;
 window.refresh = "200";
 
+function sync(){
+  chrome.storage.sync.set(dataStorage);
+}
+
+chrome.storage.sync.get(function(data) {
+      dataStorage = data;
+      window.dataStorage = data;
+      if (dataStorage.firstRun != false){
+        dataStorage["fontFamilyChecked"] = true;
+        dataStorage["fontSizeChecked"] = true;
+        dataStorage["backgroundColorChecked"] = true;
+        dataStorage["lineHeightChecked"] = true;
+        dataStorage["enabled"] = true;
+        dataStorage["refresh"] = 200;
+        dataStorage.firstRun = false;
+        sync();
+      }
+    });
+
 //Done>perfect I guess. I'm bad with asynchronous functions.
 //the following functions are basically the same as the functions for popup.html
 //except there wasn't a need to import all of the other scripts if we're only

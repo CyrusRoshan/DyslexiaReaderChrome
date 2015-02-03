@@ -6,6 +6,7 @@ function clearDomainValues(){
 function saveDomainValues(domain, status) {
     dataStorage["currentStatus"] = window.currentStatus;
     dataStorage[domain] = status;
+    dataStorage["enabled"] = enabled;
     if (status == "Disabled") {
       chrome.storage.sync.set(dataStorage);
     }
