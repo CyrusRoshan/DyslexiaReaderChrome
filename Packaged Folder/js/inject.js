@@ -5,7 +5,7 @@ function cssInject(){
     code:
       'var elements = document.getElementsByTagName("*");' +
       'for (var i=0; i < elements.length; i++) {' +
-        'elements[i].setAttribute("style", "' + style + '");' +
+        '$(elements[i]).addClass( "injectHere" );' +
       '}'
   });
   window.ran = true;
@@ -16,13 +16,9 @@ function cssRemove(){
   checkCss();
     chrome.tabs.executeScript({
       code:
-        'var html = document.getElementsByTagName("html")[0];' +
-        'var htmlCss = html.style.cssText;' +
-        'if (htmlCss.indexOf("!important") > -1){' +
-          'var elements = document.getElementsByTagName("*");' +
-          'for (var i=0; i < elements.length; i++) {' +
-            'elements[i].setAttribute("style", "");' +
-          '}' +
+        'var elements = document.getElementsByTagName("*");' +
+        'for (var i=0; i < elements.length; i++) {' +
+          '$(elements[i]).removeClass( "injectHere" );' +
         '}'
     });
   //removes the values from the elements
@@ -36,16 +32,61 @@ function checkCss(){
   window.backgroundColorChecked = window.dataStorage["backgroundColorChecked"];
   window.lineHeightChecked = window.dataStorage["lineHeightChecked"];
   window.style = "";
+  chrome.tabs.executeScript({
+    code:
+      'var injectHere = document.getElementsByClassName("injectHere");'
+  });
+
+
   if (fontFamilyChecked === true) {
-    style += "font-family: Courier !important;"
-  };
+    chrome.tabs.executeScript({
+      code:
+        'injectHere.style.fontFamily = "Courier";'
+    });
+  }
+  else {
+    chrome.tabs.executeScript({
+      code:
+        'injectHere.style.fontFamily = "";'
+    });
+  }
+
   if (fontSizeChecked === true) {
-    style += "font-size: 18pt !important;"
-  };
+    chrome.tabs.executeScript({
+      code:
+        'injectHere.style.fontSize = "18pt";'
+    });
+  }
+  else {
+    chrome.tabs.executeScript({
+      code:
+        'injectHere.style.fontSize = "";'
+    });
+  }
+
   if (backgroundColorChecked === true) {
-    style += "backgrond-color: #fbfbfb !important;"
-  };
+    chrome.tabs.executeScript({
+      code:
+        'injectHere.style.backgroundColor = "#fbfbfb";'
+    });
+  }
+  else {
+    chrome.tabs.executeScript({
+      code:
+        'injectHere.style.backgroundColor = "";'
+    });
+  }
+
   if (lineHeightChecked === true) {
-    style += "line-height: 1.5 !important;"
-  };
+    chrome.tabs.executeScript({
+      code:
+        'injectHere.style.lineHeight = "1.5";'
+    });
+  }
+  else {
+    chrome.tabs.executeScript({
+      code:
+        'injectHere.style.lineHeight = "";'
+    });
+  }
 }
