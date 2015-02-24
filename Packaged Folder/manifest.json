@@ -27,12 +27,19 @@
 
   ],
 
+  "web_accessible_resources": [
+    "css/fontFamily.css",
+    "css/fontSize.css",
+    "css/backgroundColor.css",
+    "css/lineHeight.css"
+  ],
+
   "options_page": "options.html",
 
   "content_scripts": [
       {
         "matches": ["<all_urls>"],
-        "js": ["js/jquery-2.1.3.min.js", "js/contentScript.js"]
+        "js": ["js/contentScript.js"]
       }
     ],
 
