@@ -18,7 +18,9 @@ window.queued = false;
 window.refresh = "200";
 //Done>perfect I guess. I'm bad with asynchronous functions.
 
+
 document.addEventListener('DOMContentLoaded', function () {
     $(".questionContainer").hide();
     urlChecker();
+    saveAndLog();
 });

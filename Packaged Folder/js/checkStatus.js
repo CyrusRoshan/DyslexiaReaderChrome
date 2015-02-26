@@ -26,6 +26,7 @@ function checkStatus() {
     Neither.checked = true;
   }
   if (enabled === true && status != "Disabled"){
+    saveDomainValues();
     cssInject();
   }
   else {

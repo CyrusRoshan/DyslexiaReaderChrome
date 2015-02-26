@@ -66,14 +66,14 @@ function second() {
 }
 
 function third() {
+  sync();
   window.refresh = dataStorage["refresh"];
-  dataStorage["currentStatus"] = window.dataStorage["currentStatus"];
-  dataStorage[domain] = window.dataStorage[domain];
+  window.dataStorage["currentStatus"] = dataStorage["currentStatus"];
+  window.dataStorage[domain] = dataStorage[domain];
+  window.currentStatus = dataStorage["currentStatus"]
 
-  currentStatus = dataStorage["currentStatus"]
 
-
-  enabled = currentStatus;
+  window.enabled = currentStatus;
   if (window.refresh < 1){
     window.refresh = 200;
     dataStorage["refresh"] = 200;

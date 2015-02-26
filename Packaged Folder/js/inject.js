@@ -4,7 +4,7 @@ function cssInject(){
     code:
       'var elements = document.getElementsByTagName("*");' +
       'for (var i=0; i < elements.length; i++) {' +
-        'elements[i].classList.add("' + classes + '");' +
+        'elements[i].classList.add(' + classes + ');' +
       '}'
   });
   window.ran = true;
@@ -33,35 +33,37 @@ function checkCss(){
   window.classes = "";
 
   if (fontFamilyChecked === true){
-    classes = "'injectFfHere'";
+    classes = "\"injectFfHere\"";
   }
   //get font family ready for injection
 
   if (fontSizeChecked === true){
     if (classes != ""){
-      classes += ", 'injectFsHere'";
+      classes += ", \"injectFsHere\"";
     }
     else {
-      classes = "'injectFsHere'";
+      classes = "\"injectFsHere\"";
     }
   }
   //get font size ready
 
   if (backgroundColorChecked === true){
     if (classes != ""){
-      classes += ", 'injectBcHere'";
+      classes += ", \"injectBcHere\"";
     }
     else {
-      classes = "'injectBcHere'";
+      classes = "\"injectBcHere\"";
     }
   }
   //get background color ready
 
   if (lineHeightChecked === true){
     if (classes != ""){
-      classes += ", 'injectLhHere'";
+      classes += ", \"injectLhHere\"";
     }
-    classes = "'injectLhHere', ";
+    else {
+      classes = "\"injectLhHere\"";
+    }
   }
   //get line height ready
 
