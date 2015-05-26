@@ -1,11 +1,11 @@
 function changeStatus(){
-  if (enabled==true){
+  if (enabled===true){
     enabled = false;
     window.currentStatus = false;
     saveDomainValues();
     checkStatus();
   }
-  else if(enabled==false) {
+  else if(enabled===false) {
     enabled = true;
     window.currentStatus = true;
     saveDomainValues();

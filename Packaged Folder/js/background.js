@@ -9,9 +9,9 @@ window.fontSizeChecked = true;
 window.backgroundColorChecked = true;
 window.lineHeightChecked = true;
 chrome.tabs.getSelected(null, function(tab){
-  var id=tab.id
+  var id=tab.id;
   window.ran[id]=false;
-})
+});
 window.ran = false;
 window.timeup = true;
 window.queued = false;
@@ -24,7 +24,7 @@ function sync(){
 chrome.storage.sync.get(function(data) {
       dataStorage = data;
       window.dataStorage = data;
-      if (dataStorage.firstRun != false){
+      if (dataStorage.firstRun !== false){
         dataStorage["fontFamilyChecked"] = true;
         dataStorage["fontSizeChecked"] = true;
         dataStorage["backgroundColorChecked"] = true;
@@ -70,7 +70,7 @@ function third() {
   window.refresh = dataStorage["refresh"];
   window.dataStorage["currentStatus"] = dataStorage["currentStatus"];
   window.dataStorage[domain] = dataStorage[domain];
-  window.currentStatus = dataStorage["currentStatus"]
+  window.currentStatus = dataStorage["currentStatus"];
 
 
   window.enabled = currentStatus;
@@ -87,7 +87,7 @@ function third() {
       status = "Neither";
   }
 
-  if (window.dataStorage["currentStatus"] == true || window.dataStorage["currentStatus"] == false) {
+  if (window.dataStorage["currentStatus"] === true || window.dataStorage["currentStatus"] === false) {
     enabled = window.dataStorage["currentStatus"];
   }
   else {
@@ -109,13 +109,13 @@ function fourth(){
 chrome.runtime.onMessage.addListener(function(message) {
   if (message.modified === true && window.timeup === true) {
       window.timeup = false;
-      setTimeout(function(){window.timeup = true},window.refresh);
+      setTimeout(function(){window.timeup = true;},window.refresh);
       third();
   }
   else if(window.queued === false) {
     window.queued = true;
     setTimeout(third(),window.refresh);
-    setTimeout(function(){window.queued = true},window.refresh);
+    setTimeout(function(){window.queued = true;},window.refresh);
   }
 });
 

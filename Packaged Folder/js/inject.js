@@ -38,7 +38,7 @@ function checkCss(){
   //get font family ready for injection
 
   if (fontSizeChecked === true){
-    if (classes != ""){
+    if (classes !== ""){
       classes += ", \"injectFsHere\"";
     }
     else {
@@ -48,7 +48,7 @@ function checkCss(){
   //get font size ready
 
   if (backgroundColorChecked === true){
-    if (classes != ""){
+    if (classes !== ""){
       classes += ", \"injectBcHere\"";
     }
     else {
@@ -58,7 +58,7 @@ function checkCss(){
   //get background color ready
 
   if (lineHeightChecked === true){
-    if (classes != ""){
+    if (classes !== ""){
       classes += ", \"injectLhHere\"";
     }
     else {

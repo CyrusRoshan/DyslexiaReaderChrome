@@ -52,7 +52,7 @@ function configureDomainValues() {
   dataStorage["currentStatus"] = window.dataStorage["currentStatus"];
   dataStorage[domain] = window.dataStorage[domain];
 
-  currentStatus = dataStorage["currentStatus"]
+  currentStatus = dataStorage["currentStatus"];
 
 
   enabled = currentStatus;
@@ -69,12 +69,12 @@ function configureDomainValues() {
       status = "Neither";
   }
 
-  if (window.dataStorage["currentStatus"] == true || window.dataStorage["currentStatus"] == false) {
+  if (window.dataStorage["currentStatus"] === true || window.dataStorage["currentStatus"] === false) {
     enabled = window.dataStorage["currentStatus"];
   }
   else {
       enabled = false;
-      window.dataStorage["currentStatus"] == false;
+      window.dataStorage["currentStatus"] = false;
   }
   checkStatus();
   //gets individual values from chrome's sync storage (which was saved as dataStorage earlier)
