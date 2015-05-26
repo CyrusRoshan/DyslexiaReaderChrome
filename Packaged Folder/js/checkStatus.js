@@ -25,13 +25,16 @@ function checkStatus() {
   else if ( status == "Neither") {
     Neither.checked = true;
   }
+  
   if (enabled === true && status != "Disabled"){
     saveDomainValues();
     cssInject();
   }
   else {
+    saveDomainValues();
     cssRemove();
   }
+  
   saveDomainValues();
 }
 
