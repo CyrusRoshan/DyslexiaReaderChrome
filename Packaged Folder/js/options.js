@@ -7,10 +7,11 @@ function declareVariables(){
     window.refresh = "";
     window.dataStorage = {};
     window.enabled = "";
-    window.fontFamilyChecked = true;
-    window.fontSizeChecked = true;
-    window.backgroundColorChecked = true;
-    window.lineHeightChecked = true;
+    window.fontFamilyVal = "Courier";
+    window.fontSizeVal = "18pt";
+    window.backgroundColorVal = "#fbfbfb";
+    window.lineHeightVal = "1.5";
+    window.forceInjectChecked = false;
     dataStorage = data;
     window.dataStorage = data;
 
@@ -28,11 +29,12 @@ function loadValues(){
 }
 
 function setValues(){
-  document.getElementById("fontFamily").checked = dataStorage["fontFamilyChecked"];
-  document.getElementById("fontSize").checked = dataStorage["fontSizeChecked"];
-  document.getElementById("backgroundColor").checked = dataStorage["backgroundColorChecked"];
-  document.getElementById("lineHeight").checked = dataStorage["lineHeightChecked"];
-  document.getElementById("refresh").value = dataStorage["refresh"];
+  $("#fontFamily").val(dataStorage["fontFamilyVal"]);
+  $("#fontSize").val(dataStorage["fontSizeVal"]);
+  $("#backgroundColor").val(dataStorage["backgroundColorVal"]);
+  $("#lineHeight").val(dataStorage["lineHeightVal"]);
+  $("#refresh").val(dataStorage["refresh"]);
+  $("#forceInject").val(dataStorage["forceInject"]);
   if (document.getElementById("refresh").value < 1){
     document.getElementById("refresh").value = 200;
     dataStorage["refresh"] = 200;
@@ -41,11 +43,12 @@ function setValues(){
 }
 
 function partA(){
-  dataStorage["fontFamilyChecked"] = document.getElementById("fontFamily").checked;
-  dataStorage["fontSizeChecked"] = document.getElementById("fontSize").checked;
-  dataStorage["backgroundColorChecked"] = document.getElementById("backgroundColor").checked;
-  dataStorage["lineHeightChecked"] = document.getElementById("lineHeight").checked;
-  dataStorage["refresh"] = document.getElementById("refresh").value;
+  dataStorage["fontFamilyVal"] = $("#fontFamily").val();
+  dataStorage["fontSizeVal"] = $("#fontSize").val();
+  dataStorage["backgroundColorVal"] = $("#backgroundColor").val();
+  dataStorage["lineHeightVal"] = $("#lineHeight").val();
+  dataStorage["refresh"] = $("#refresh").val();
+  dataStorage["forceInject"] = $("#forceInject").val();
 }
 
 function partB(){
@@ -62,10 +65,11 @@ function saveOptions(){
 
 document.addEventListener('DOMContentLoaded', function () {
 
-  document.getElementById("fontFamily").addEventListener("click", saveOptions);
-  document.getElementById("fontSize").addEventListener("click", saveOptions);
-  document.getElementById("backgroundColor").addEventListener("click", saveOptions);
-  document.getElementById("lineHeight").addEventListener("click", saveOptions);
-  document.getElementById("refresh").addEventListener("keyup", saveOptions);
+  document.getElementById("fontFamily").addEventListener("blur", saveOptions);
+  document.getElementById("fontSize").addEventListener("blur", saveOptions);
+  document.getElementById("backgroundColor").addEventListener("blur", saveOptions);
+  document.getElementById("lineHeight").addEventListener("blur", saveOptions);
+  document.getElementById("refresh").addEventListener("blur", saveOptions);
+  document.getElementById("forceInject").addEventListener("click", saveOptions);
   declareVariables();
 });

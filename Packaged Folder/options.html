@@ -3,6 +3,7 @@
   <head>
     <link href="css/optionsStyle.css" rel='stylesheet' type='text/css' />
     <title>DRC Options</title>
+    <script src="js/jquery-2.1.4.min.js"></script>
     <script src="js/options.js"></script>
   </head>
   <body>
@@ -13,21 +14,26 @@
       <div class="optionContainer">
         <div class="basic">Basic:</div>
         <form>
+          <div class="listItem">Font Family<label for="fontFamily"><input type="text" name="fontFamily" class="fontFamily" id="fontFamily" value="" placeholder="Default is Courier"><br></label></div>
+          <div class="listItem">Font Size<label for="fontSize"><input type="text" name="fontSize" class="fontSize" id="fontSize" value="" placeholder="Default is 18pt"><br></label></div>
+          <div class="listItem">Background Color<label for="backgroundColor"><input type="text" name="backgroundColor" class="backgroundColor" id="backgroundColor" value="" placeholder="Default is #fbfbfb"><br></label></div>
+          <div class="listItem">Line Height<label for="lineHeight"><input type="text" name="lineHeight" class="lineHeight" id="lineHeight" value="" placeholder="Default is 1.5"><br></label></div>
+          <!--
           <label for="fontFamily"><input type="checkbox" name="savedOption" class="checkbox" id="fontFamily" value="fontFamily">Change font family to Courier<br></label>
           <label for="fontSize"><input type="checkbox" name="savedOption" class="checkbox" id="fontSize" value="fontSize">Change font size to 18pt<br></label>
           <label for="backgroundColor"><input type="checkbox" name="savedOption" class="checkbox" id="backgroundColor" value="backgroundColor">Change background color to #fbfbfb<br></label>
           <label for="lineHeight"><input type="checkbox" name="savedOption" class="checkbox" id="lineHeight" value="lineHeight">Change line height to 1.5<br></label>
+          -->
         </form>
       </div>
       <div class="textContainer">
         <div class="advanced">Advanced:</div>
         <form>
-          <div>Time to wait before injecting css upon new element creation. <label for="refresh"><input type="text" name="refresh" class="refresh" id="refresh" value="" placeholder="Default is 200ms"><br></label></div>
-          <!--<label for="forceInject"><input type="checkbox" name="savedOption" class="checkbox" id="forceInject" value="forceInject">Forcefully override website styling by injecting inline styling as opposed to through stylesheets. (Caution, will break some sites. Does not use !important).<br></label>
-          -->
+          <div class="listItem">Time to wait before injecting css upon new element creation. <label for="refresh"><input type="text" name="refresh" class="refresh" id="refresh" value="" placeholder="Default is 200ms"><br></label></div>
+          <div class="listItem">Forcefully override website styling by injecting inline styling as opposed to through stylesheets. (Caution, will break some sites. Does not use !important).<label for="forceInject"><input type="checkbox" name="savedOption" class="checkbox" id="forceInject" value="forceInject"></label><br></div>
         </form>
       </div>
-      <div class="message">These options autosave when a value is changed. It's not recommended to change the advanced options without reading the source code.</div>
+      <div class="message">These options autosave when a value is changed. Leave a value blank if you don't want any styling of that type to be injected into the page. It's not recommended to change the advanced options without reading the source code.</div>
     </div>
   </body>
 </html>

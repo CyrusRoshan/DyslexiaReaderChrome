@@ -4,10 +4,11 @@ window.domain = "";
 window.dataStorage = {};
 window.enabled = "";
 window.currentStatus = "";
-window.fontFamilyChecked = true;
-window.fontSizeChecked = true;
-window.backgroundColorChecked = true;
-window.lineHeightChecked = true;
+window.fontFamilyVal = "Courier";
+window.fontSizeVal = "18pt";
+window.backgroundColorVal = "#fbfbfb";
+window.lineHeightVal = "1.5";
+window.forceInjectChecked = false;
 chrome.tabs.getSelected(null, function(tab){
   var id=tab.id;
   window.ran[id]=false;

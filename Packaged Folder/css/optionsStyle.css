@@ -13,6 +13,11 @@ body {
   width: 600px;
   padding: 20px;
 }
+  .listItem{
+    margin-bottom: 5px;
+    margin-top: 5px;
+  }
+  
 .titleContainer{
   margin-bottom: 20px;
 }
@@ -21,6 +26,9 @@ body {
   margin-bottom: 20px;
   padding-left: 20px;
 }
+  .optionContainer .listItem label{
+    margin-left: 5px;
+  }
   .optionContainer .basic{
     font-size: 20px;
   }
