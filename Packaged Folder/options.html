@@ -18,6 +18,7 @@
           <div class="listItem">Font Size<label for="fontSize"><input type="text" name="fontSize" class="fontSize" id="fontSize" value="" placeholder="Default is 18pt"><br></label></div>
           <div class="listItem">Background Color<label for="backgroundColor"><input type="text" name="backgroundColor" class="backgroundColor" id="backgroundColor" value="" placeholder="Default is #fbfbfb"><br></label></div>
           <div class="listItem">Line Height<label for="lineHeight"><input type="text" name="lineHeight" class="lineHeight" id="lineHeight" value="" placeholder="Default is 1.5"><br></label></div>
+          <div class="listItem">Text Color<label for="color"><input type="text" name="color" class="color" id="color" value="" placeholder="Default is #000000"><br></label></div>
           <!--
           <label for="fontFamily"><input type="checkbox" name="savedOption" class="checkbox" id="fontFamily" value="fontFamily">Change font family to Courier<br></label>
           <label for="fontSize"><input type="checkbox" name="savedOption" class="checkbox" id="fontSize" value="fontSize">Change font size to 18pt<br></label>
@@ -30,7 +31,7 @@
         <div class="advanced">Advanced:</div>
         <form>
           <div class="listItem">Time to wait before injecting css upon new element creation. <label for="refresh"><input type="text" name="refresh" class="refresh" id="refresh" value="" placeholder="Default is 200ms"><br></label></div>
-          <div class="listItem">Forcefully override website styling by injecting inline styling as opposed to through stylesheets. (Caution, will break some sites. Does not use !important).<label for="forceInject"><input type="checkbox" name="savedOption" class="checkbox" id="forceInject" value="forceInject"></label><br></div>
+          <div class="listItem">Forcefully override website styling by adding "!important" to all style declarations. (Caution: will break some websites)<label id="forceInjectHolder" for="forceInject"><input type="checkbox" name="forceInject" class="checkbox forceInject" id="forceInject" value="forceInject"></label><br></div>
         </form>
       </div>
       <div class="message">These options autosave when a value is changed. Leave a value blank if you don't want any styling of that type to be injected into the page. It's not recommended to change the advanced options without reading the source code.</div>

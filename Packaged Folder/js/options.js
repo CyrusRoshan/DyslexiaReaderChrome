@@ -11,6 +11,7 @@ function declareVariables(){
     window.fontSizeVal = "18pt";
     window.backgroundColorVal = "#fbfbfb";
     window.lineHeightVal = "1.5";
+    window.colorVal = "#000000";
     window.forceInjectChecked = false;
     dataStorage = data;
     window.dataStorage = data;
@@ -33,8 +34,11 @@ function setValues(){
   $("#fontSize").val(dataStorage["fontSizeVal"]);
   $("#backgroundColor").val(dataStorage["backgroundColorVal"]);
   $("#lineHeight").val(dataStorage["lineHeightVal"]);
+  $("#color").val(dataStorage["colorVal"]);
   $("#refresh").val(dataStorage["refresh"]);
-  $("#forceInject").val(dataStorage["forceInject"]);
+  if (dataStorage["forceInject"] === true){
+    document.getElementById("forceInject").checked = true;
+  }
   if (document.getElementById("refresh").value < 1){
     document.getElementById("refresh").value = 200;
     dataStorage["refresh"] = 200;
@@ -47,8 +51,9 @@ function partA(){
   dataStorage["fontSizeVal"] = $("#fontSize").val();
   dataStorage["backgroundColorVal"] = $("#backgroundColor").val();
   dataStorage["lineHeightVal"] = $("#lineHeight").val();
+  dataStorage["colorVal"] = $("#color").val();
   dataStorage["refresh"] = $("#refresh").val();
-  dataStorage["forceInject"] = $("#forceInject").val();
+  dataStorage["forceInject"] = document.getElementById("forceInject").checked;
 }
 
 function partB(){
@@ -69,6 +74,7 @@ document.addEventListener('DOMContentLoaded', function () {
   document.getElementById("fontSize").addEventListener("blur", saveOptions);
   document.getElementById("backgroundColor").addEventListener("blur", saveOptions);
   document.getElementById("lineHeight").addEventListener("blur", saveOptions);
+  document.getElementById("color").addEventListener("blur", saveOptions);
   document.getElementById("refresh").addEventListener("blur", saveOptions);
   document.getElementById("forceInject").addEventListener("click", saveOptions);
   declareVariables();

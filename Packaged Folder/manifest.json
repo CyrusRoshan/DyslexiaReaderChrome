@@ -1,7 +1,7 @@
 {
   "name": "Dyslexia Reader Chrome",
   "description": "Dyslexia Reader as a Google Chrome extension.",
-  "version": "3.1",
+  "version": "3.5",
 
   "background": {
     "page": "background.html",
@@ -30,14 +30,6 @@
   ],
 
   "options_page": "options.html",
-
-  "content_scripts": [
-      {
-        "matches": ["<all_urls>"],
-        "css": ["css/injectedCss.css"],
-        "js": ["js/contentScript.js"]
-      }
-    ],
 
   "manifest_version": 2
 }

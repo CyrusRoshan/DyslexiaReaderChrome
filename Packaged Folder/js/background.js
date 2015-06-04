@@ -4,10 +4,12 @@ window.domain = "";
 window.dataStorage = {};
 window.enabled = "";
 window.currentStatus = "";
-window.fontFamilyChecked = true;
-window.fontSizeChecked = true;
-window.backgroundColorChecked = true;
-window.lineHeightChecked = true;
+window.fontFamilyVal = "";
+window.fontSizeVal = "";
+window.backgroundColorVal = "";
+window.lineHeightVal = "";
+window.colorVal = "";
+window.forceInjectChecked = false;
 chrome.tabs.getSelected(null, function(tab){
   var id=tab.id;
   window.ran[id]=false;
@@ -25,11 +27,13 @@ chrome.storage.sync.get(function(data) {
       dataStorage = data;
       window.dataStorage = data;
       if (dataStorage.firstRun !== false){
-        dataStorage["fontFamilyChecked"] = true;
-        dataStorage["fontSizeChecked"] = true;
-        dataStorage["backgroundColorChecked"] = true;
-        dataStorage["lineHeightChecked"] = true;
+        dataStorage["fontFamilyVal"] = "Courier";
+        dataStorage["fontSizeVal"] = "18pt";
+        dataStorage["backgroundColorVal"] = "#fbfbfb";
+        dataStorage["lineHeightVal"] = "1.5";
+        dataStorage["colorVal"] = "#000000";
         dataStorage["enabled"] = true;
+        dataStorage["forceInject"] = true;
         dataStorage["refresh"] = 200;
         dataStorage.firstRun = false;
         sync();
@@ -37,9 +41,9 @@ chrome.storage.sync.get(function(data) {
     });
 
 //Done>perfect I guess. I'm bad with asynchronous functions.
-//the following functions are basically the same as the functions for popup.html
-//except there wasn't a need to import all of the other scripts if we're only
-//going to read the values.
+//This code makes a few other js files redundant and unused,
+//since with the update, the background page does all of the
+//work, so the popup page only changes "enabled"
 
 function first(){
   chrome.tabs.getSelected(function (tabs) {
@@ -50,20 +54,26 @@ function first(){
     second();
   });
 }
+//above code finds the domain name of the website
 
-  var elements = document.getElementsByTagName("*");
-  for (var i=0; i < elements.length; i++) {
-    elements[i].setAttribute("style", "' + style + '");
-  }
+
 
 function second() {
     chrome.storage.sync.get(function(data) {
       dataStorage = data;
       window.dataStorage = data;
+      window.fontFamilyVal = dataStorage["fontFamilyVal"];
+      window.fontSizeVal = dataStorage["fontSizeVal"];
+      window.backgroundColorVal = dataStorage["backgroundColorVal"];
+      window.lineHeightVal = dataStorage["lineHeightVal"];
+      window.colorVal = dataStorage["colorVal"];
+      window.forceInjectChecked = dataStorage["forceInject"];
+      window.refresh = dataStorage["refresh"];
       third();
     });
-
 }
+//the above code imports dataStorage, so values are saved
+//through sessions and browsers (assuming user syncs chrome)
 
 function third() {
   sync();
@@ -95,6 +105,7 @@ function third() {
   }
   fourth();
 }
+//above code basically sets "enabled" so cssInject or cssRemove work
 
 function fourth(){
   if (enabled === true && status != "Disabled"){
@@ -104,7 +115,7 @@ function fourth(){
     cssRemove();
   }
 }
-
+//above code calls functions responsible for changing styling
 
 chrome.runtime.onMessage.addListener(function(message) {
   if (message.modified === true && window.timeup === true) {
