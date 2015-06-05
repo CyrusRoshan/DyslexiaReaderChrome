@@ -29,7 +29,7 @@ chrome.storage.sync.get(function(data) {
       if (dataStorage.firstRun !== false){
         dataStorage["fontFamilyVal"] = "Courier";
         dataStorage["fontSizeVal"] = "18pt";
-        dataStorage["backgroundColorVal"] = "#fbfbfb";
+        dataStorage["backgroundColorVal"] = "#fdfcfd";
         dataStorage["lineHeightVal"] = "1.5";
         dataStorage["colorVal"] = "#000000";
         dataStorage["enabled"] = true;

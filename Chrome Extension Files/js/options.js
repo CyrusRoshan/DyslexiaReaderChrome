@@ -9,7 +9,7 @@ function declareVariables(){
     window.enabled = "";
     window.fontFamilyVal = "Courier";
     window.fontSizeVal = "18pt";
-    window.backgroundColorVal = "#fbfbfb";
+    window.backgroundColorVal = "#fdfcfd";
     window.lineHeightVal = "1.5";
     window.colorVal = "#000000";
     window.forceInjectChecked = false;
