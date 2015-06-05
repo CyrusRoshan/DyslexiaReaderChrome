@@ -1,7 +1,8 @@
 {
   "name": "Dyslexia Reader Chrome",
-  "description": "Dyslexia Reader as a Google Chrome extension.",
-  "version": "3.5",
+  "short_name": "DRC",
+  "description": "Change webpage styling for better readability",
+  "version": "3.5.1",
 
   "background": {
     "page": "background.html",
