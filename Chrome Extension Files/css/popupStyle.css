@@ -13,7 +13,9 @@ body {
 .statusContainer{
   height: 50px;
   padding: 5px;
-  background-color: white;
+/*  background-color: white;
+*/  background-color: rgb(77, 203, 109);
+
 }
 body {
   font-family: sans-serif;
