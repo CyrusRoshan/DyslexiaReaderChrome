@@ -23,7 +23,6 @@ body {
   background-color: #eee;
 }
 
-
 label {
   width: 200px;
   border-radius: 3px;
@@ -93,7 +92,10 @@ input.radio:focus ~ label:before {
   text-align: center;
   font-size: 30px;
 }
-
+.radio {
+margin-left: -40px;
+    
+}
 .buttonContainer{
   height:120px;
   padding: 5px;

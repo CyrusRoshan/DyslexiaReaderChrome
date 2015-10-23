@@ -10,8 +10,10 @@ function checkStatus() {
     $(".statusContainer").css("background-color", "rgb(24, 150, 71)");
     $(".powerButton").attr("src", "images/enabled.png");
     $(".questionContainer").show("fast");
-    $(".domain").html("on " + window.domain);
-  }
+    
+      $(".domain").html(window.domain);
+
+}
   else if (enabled === false) {
     currentStatus = false;
     $(".status").html("Disabled");
