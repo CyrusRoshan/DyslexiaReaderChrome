@@ -1,40 +1,46 @@
 <!doctype html>
 <html>
-  <head>
-    <link href="css/optionsStyle.css" rel='stylesheet' type='text/css' />
-    <title>DRC Options</title>
-    <script src="js/jquery-2.1.4.min.js"></script>
-    <script src="js/options.js"></script>
-  </head>
-  <body>
-    <div class="mainContainer">
-      <div div class="titleContainer">
-        <div class="title">Options:</div>
-      </div>
-      <div class="optionContainer">
-        <div class="basic">Basic:</div>
-        <form>
-          <div class="listItem">Font Family<label for="fontFamily"><input type="text" name="fontFamily" class="fontFamily" id="fontFamily" value="" placeholder="Default is Courier"><br></label></div>
-          <div class="listItem">Font Size<label for="fontSize"><input type="text" name="fontSize" class="fontSize" id="fontSize" value="" placeholder="Default is 18pt"><br></label></div>
-          <div class="listItem">Background Color<label for="backgroundColor"><input type="text" name="backgroundColor" class="backgroundColor" id="backgroundColor" value="" placeholder="Default is #fdfcfd"><br></label></div>
-          <div class="listItem">Line Height<label for="lineHeight"><input type="text" name="lineHeight" class="lineHeight" id="lineHeight" value="" placeholder="Default is 1.5"><br></label></div>
-          <div class="listItem">Text Color<label for="color"><input type="text" name="color" class="color" id="color" value="" placeholder="Default is #000000"><br></label></div>
-          <!--
-          <label for="fontFamily"><input type="checkbox" name="savedOption" class="checkbox" id="fontFamily" value="fontFamily">Change font family to Courier<br></label>
-          <label for="fontSize"><input type="checkbox" name="savedOption" class="checkbox" id="fontSize" value="fontSize">Change font size to 18pt<br></label>
-          <label for="backgroundColor"><input type="checkbox" name="savedOption" class="checkbox" id="backgroundColor" value="backgroundColor">Change background color to #fbfbfb<br></label>
-          <label for="lineHeight"><input type="checkbox" name="savedOption" class="checkbox" id="lineHeight" value="lineHeight">Change line height to 1.5<br></label>
-          -->
-        </form>
-      </div>
-      <div class="textContainer">
-        <div class="advanced">Advanced:</div>
-        <form>
-          <div class="listItem">Time to wait before injecting css upon new element creation. <label for="refresh"><input type="text" name="refresh" class="refresh" id="refresh" value="" placeholder="Default is 200ms"><br></label></div>
-          <div class="listItem">Forcefully override website styling by adding "!important" to all style declarations. (Caution: will break some websites)<label id="forceInjectHolder" for="forceInject"><input type="checkbox" name="forceInject" class="checkbox forceInject" id="forceInject" value="forceInject"></label><br></div>
-        </form>
-      </div>
-      <div class="message">These options autosave when a value is changed. Leave a value blank if you don't want any styling of that type to be injected into the page. It's not recommended to change the advanced options without reading the source code.</div>
-    </div>
-  </body>
+	<head>
+		<title>DRC Options</title>
+		<script src="js/jquery-2.1.4.min.js"></script>
+		<script src="js/options.js"></script>
+		<style>
+			body{
+				width: 400px;
+			}
+
+			label{
+				margin-left: 5px;
+				height: 10px;
+			}
+			li{
+				margin-bottom: 3px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="mainContainer">
+			<div class="optionContainer">
+				<h2>Basic:</h2>
+				<form>
+					<ul>
+						<li class="listItem">Font Family<label for="fontFamily"><input type="text" name="fontFamily" class="fontFamily" id="fontFamily" value="" placeholder="Default is Courier"><br></label></li>
+						<li class="listItem">Font Size<label for="fontSize"><input type="text" name="fontSize" class="fontSize" id="fontSize" value="" placeholder="Default is 18pt"><br></label></li>
+						<li class="listItem">Background Color<label for="backgroundColor"><input type="text" name="backgroundColor" class="backgroundColor" id="backgroundColor" value="" placeholder="Default is #fdfcfd"><br></label></li>
+						<li class="listItem">Line Height<label for="lineHeight"><input type="text" name="lineHeight" class="lineHeight" id="lineHeight" value="" placeholder="Default is 1.5"><br></label></li>
+						<li class="listItem">Text Color<label for="color"><input type="text" name="color" class="color" id="color" value="" placeholder="Default is #000000"><br></label></li>
+					</ul>
+				</form>
+			</div>
+			<div class="textContainer">
+				<h2>Advanced:</h2>
+				<form>
+					<ul>
+						<li class="listItem">Forcefully override website styling<label id="forceInjectHolder" for="forceInject"><input type="checkbox" name="forceInject" class="checkbox forceInject" id="forceInject" value="forceInject"></label><br></li>
+					</ul>
+				</form>
+			</div>
+			<h5>These options will autosave. Leave value blank for no injected styling of that type. Advanced options may break some webpages.</div>
+			</h5>
+	</body>
 </html>

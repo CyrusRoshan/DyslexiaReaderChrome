@@ -1,13 +1,17 @@
+function saveDomainEnabled(){
+	saveDomain("Enabled");
+}
 
 function saveDomainDisabled(){
-  saveDomain("Disabled");
+	saveDomain("Disabled");
 }
 
 function saveDomainNeither(){
-  saveDomain("Neither");
+	saveDomain("Neither");
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-  document.getElementById("Disabled").addEventListener("click", saveDomainDisabled);
-  document.getElementById("Neither").addEventListener("click", saveDomainNeither);
+	document.getElementById("Enabled").addEventListener("click", saveDomainEnabled);
+	document.getElementById("Disabled").addEventListener("click", saveDomainDisabled);
+	document.getElementById("Neither").addEventListener("click", saveDomainNeither);
 });

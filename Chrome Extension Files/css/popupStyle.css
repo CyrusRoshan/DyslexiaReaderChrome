@@ -1,67 +1,75 @@
 body {
-  width: 250px;
-  overflow-x: hidden;
+	width: 250px;
+	overflow-x: hidden;
 }
 
 .mainContainer {
-  height: 100%;
-  padding: 10px;
-  background-color: rgb(81, 81, 81);
+	height: 100%;
+	padding: 10px;
+	background-color: rgb(81, 81, 81);
 }
 
 .statusContainer{
-  height: 50px;
-  padding: 5px;
-  background-color: white;
+	width: 100%;
+	padding: 10px;
+	padding-left: 0;
+	padding-right: 0;
+	font-family: raleway;
+	font-weight: 400;
+	display: inline-block;
+	text-align: center;
+	background-color: white;
 }
 
 .status{
-  color: white;
-  text-align: center;
-  font-size: 30px;
+	color: white;
+	text-align: center;
+	font-size: 30px;
 }
 
 .buttonContainer{
-  height:120px;
-  padding: 5px;
-  background-color: rgb(142, 142, 142);
+	height: 120px;
+	padding: 10px;
+	padding-left: 0;
+	padding-right: 0;
+	background-color: rgb(142, 142, 142);
 }
-  .buttonContainer button{
-    cursor: pointer;
-    border: 2px solid white;
-    background: none;
-    padding: 0px;
-    overflow: hidden;
-    width: 120px;
-    height: 120px;
-    border-radius: 25%;
+.buttonContainer button{
+	cursor: pointer;
+	border: 2px solid white;
+	background: none;
+	padding: 0px;
+	overflow: hidden;
+	width: 120px;
+	height: 120px;
+	border-radius: 25%;
 
 }
-    .buttonContainer button .powerButton{
-      width: 100%;
-    }
+.buttonContainer button .powerButton{
+	width: 100%;
+}
 
 .questionContainer
-  {
-    background: rgb(199, 199, 199);
-    padding: 5px;
-    text-align: center;
+{
+	background: rgb(199, 199, 199);
+	padding: 5px;
+	text-align: center;
 }
 
-  .intro {
-  margin-bottom: 2px;
-  }
+.intro {
+	margin-bottom: 2px;
+}
 
-  .questionContainer .question .domain{
-    margin-bottom: 5px;
-    margin-top: 2px;
-    word-break: break-word;
-    word-wrap: break-word;
-  }
+.questionContainer .question .domain{
+	margin-bottom: 5px;
+	margin-top: 2px;
+	word-break: break-word;
+	word-wrap: break-word;
+}
 
 form {
-  text-align: left;
-  margin-left: 55px;
+	text-align: left;
+	margin-left: 55px;
 }
 
 
