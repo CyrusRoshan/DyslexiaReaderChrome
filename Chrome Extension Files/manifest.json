@@ -18,12 +18,13 @@
 	"permissions": [
 		"activeTab",
 		"tabs",
-		"storage"
+		"storage",
+		"<all_urls>"
 	],
 
 	"background": {
-		"scripts": ["js/background.js", "js/inject.js"],
-		"persistent": false
+		"scripts": ["js/background.js", "js/inject.js", "js/jquery-2.1.4.min.js"],
+		"persistent": true
 	},
 
 	"options_ui": {
