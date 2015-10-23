@@ -7,11 +7,14 @@ function checkStatus() {
   if (enabled === true) {
     currentStatus = true;
     $(".status").html("Enabled");
-    $(".statusContainer").css("background-color", "rgb(24, 150, 71)");
+    $(".statusContainer").css("background-color", "rgb(77, 203, 109"
+);
     $(".powerButton").attr("src", "images/enabled.png");
     $(".questionContainer").show("fast");
-    $(".domain").html("on " + window.domain);
-  }
+    
+      $(".domain").html(window.domain);
+
+}
   else if (enabled === false) {
     currentStatus = false;
     $(".status").html("Disabled");
