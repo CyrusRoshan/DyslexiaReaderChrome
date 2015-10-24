@@ -21,7 +21,7 @@
 	<body>
 		<div class="mainContainer">
 			<div class="optionContainer">
-				<h2>Basic:</h2>
+				<h2>Basic Preferences:</h2>
 				<form>
 					<ul>
 						<li class="listItem">Font Family<label for="fontFamily"><input type="text" name="fontFamily" class="fontFamily" id="fontFamily" value="" placeholder="Default is Courier"><br></label></li>
@@ -29,6 +29,7 @@
 						<li class="listItem">Background Color<label for="backgroundColor"><input type="text" name="backgroundColor" class="backgroundColor" id="backgroundColor" value="" placeholder="Default is #fdfcfd"><br></label></li>
 						<li class="listItem">Line Height<label for="lineHeight"><input type="text" name="lineHeight" class="lineHeight" id="lineHeight" value="" placeholder="Default is 1.5"><br></label></li>
 						<li class="listItem">Text Color<label for="color"><input type="text" name="color" class="color" id="color" value="" placeholder="Default is #000000"><br></label></li>
+						<li class="listItem">Change button icon (on browser bar) on enable/disable<label id="iconColorHolder" for="iconColor"><input type="checkbox" name="iconColor" class="checkbox iconColor" id="iconColor" value="iconColor"></label><br></li>
 					</ul>
 				</form>
 			</div>
@@ -40,7 +41,21 @@
 					</ul>
 				</form>
 			</div>
-			<h5>These options will autosave. Leave value blank for no injected styling of that type. Advanced options may break some webpages.</div>
+			<div class="dataContainer">
+				<h2>Website Data:</h2>
+				<ul>
+					<div id="enabledSites"></div>
+					<div id="disabledSites"></div>
+				</ul>
+			</div>
+
+			<div class="buttonContainer">
+				<h2>Reset Buttons:</h2>
+				<button id="resetPref" style="margin-right: 5px" type="button">Reset Preferences</button>
+				<button id="resetData" type="button">Reset Website Data</button>
+			</div>
+
+			<h5>These options will autosave. Leave value blank for no injected styling of that type. Advanced options may break some webpages.
 			</h5>
-	</body>
-</html>
+			</body>
+		</html>

@@ -7,6 +7,7 @@ chrome.storage.sync.get(function(data) {
 	window.lineHeightVal = dataStorage["lineHeightVal"];
 	window.colorVal = dataStorage["colorVal"];
 	window.forceInjectChecked = dataStorage["forceInject"];
+	window.iconColorChecked = dataStorage["iconColor"];
 	if (window.forceInjectChecked === true){
 		window.force = " !important";
 	}

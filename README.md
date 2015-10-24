@@ -5,7 +5,7 @@ Dyslexia Reader as a Google Chrome extension. Demonstration:
 
 
 <img src="https://raw.githubusercontent.com/CyrusRoshan/DyslexiaReaderChrome/master/Examples/demo.png" width="500px">
- 
+
  <br>
 <blockquote>
 What it does by default*:
@@ -15,7 +15,7 @@ What it does by default*:
  * Font Color: \#0f0f0f
  * Background-color: \#fbfbfb
  * Line-height: 1.5
- 
+
 \* can be changed in settings
 </blockquote><br>
 
@@ -25,6 +25,5 @@ This is a project [for Game and Learn](http://gameandlearn.org), suggestions are
 
 [Download from the Chrome Web Store here](https://chrome.google.com/webstore/detail/dyslexia-reader-chrome/npfbahgomodenajejiopcfbggcpkcani?hl=en&gl=US)
 
-### License
-
- * MIT
+# License
+###MIT

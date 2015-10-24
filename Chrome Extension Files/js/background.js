@@ -10,6 +10,7 @@ window.backgroundColorVal = "";
 window.lineHeightVal = "";
 window.colorVal = "";
 window.forceInjectChecked = false;
+window.iconColorChecked = false;
 chrome.tabs.getSelected(null, function(tab){
 	var id=tab.id;
 	window.ran[id]=false;
@@ -33,6 +34,7 @@ chrome.storage.sync.get(function(data) {
 		dataStorage["colorVal"] = "#000000";
 		dataStorage["enabled"] = true;
 		dataStorage["forceInject"] = false;
+		dataStorage["iconColor"] = false;
 		dataStorage.firstRun = false;
 		sync();
 	}
@@ -66,6 +68,7 @@ function second() {
 		window.lineHeightVal = dataStorage["lineHeightVal"];
 		window.colorVal = dataStorage["colorVal"];
 		window.forceInjectChecked = dataStorage["forceInject"];
+		window.iconColorChecked = dataStorage["iconColor"];
 		third();
 	});
 }
