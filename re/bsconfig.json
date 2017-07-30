@@ -1,0 +1,8 @@
+{
+  "name": "swype",
+  "bs-dependencies": ["reason-react", "bs-director", "bs-jest"],
+  "reason": {
+    "react-jsx": 2
+  },
+  "sources": "src",
+}

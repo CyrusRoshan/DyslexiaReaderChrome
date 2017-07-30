@@ -23,7 +23,7 @@
 	],
 
 	"background": {
-		"scripts": ["js/background.js", "js/inject.js", "js/jquery-2.1.4.min.js"],
+		"scripts": ["js/background.js", "js/inject.js", "js/jquery-2.1.4.min.js", "js/Drc_inject.js", "js/Model.js"],
 		"persistent": true
 	},
 

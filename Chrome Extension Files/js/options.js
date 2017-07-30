@@ -5,7 +5,7 @@ function declareVariables(){
 		window.dataStorage = {};
 		window.enabled = "";
 		window.fontFamilyVal = "Courier";
-		window.fontSizeVal = "18pt";
+		window.fontSizeVal = "175%";
 		window.backgroundColorVal = "#fdfcfd";
 		window.lineHeightVal = "1.5";
 		window.colorVal = "#000000";
@@ -136,4 +136,12 @@ function displayData(){
 $(document).ready(function(){
 	document.getElementById('resetPref').addEventListener('click', resetPref);
 	document.getElementById('resetData').addEventListener('click', resetData);
+
+	var fontSizeInputEl = document.querySelector('#fontSize');
+	var fontSizeDisplayEl = document.querySelector('#fontSizeDisplay');
+
+	fontSizeDisplayEl.innerText = fontSizeInputEl.value + '%';
+	fontSizeInputEl.oninput = function() {
+		fontSizeDisplayEl.innerText = fontSizeInputEl.value + '%';
+	}
 });

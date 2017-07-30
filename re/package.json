@@ -1,0 +1,31 @@
+{
+  "name": "gnl-drc-reasonml-components",
+  "version": "0.0.1",
+  "description": "ML-based parts of Game & Learn's DRC browser extension",
+  "main": "src/index.js",
+  "scripts": {
+    "dist": "webpack",
+    "dist-watch": "webpack -w",
+    "babel-watch": "babel lib/js/src --watch -d dist",
+    "bsb": "bsb",
+    "bsb-watch": "bsb -w",
+    "bsb-clean": "bsb -clean",
+    "bsb-world": "bsb -make-world",
+    "test": "npm run bsb && jest",
+    "copy-dist-files-watch": "cp dist/*.js ../Chrome\\ Extension\\ Files/js/; inotifywait -q dist/*.js; echo \"Change detected.\"; npm run copy-dist-files-watch"
+  },
+  "keywords": [],
+  "author": "John Christopher McAlpine",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "bs-director": "0.0.4",
+    "bs-jest": "^0.1.0",
+    "bs-platform": "^1.8.1",
+    "jest": "^20.0.4",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "reason-react": "^0.2.3",
+    "webpack": "^3.0.0"
+  }
+}

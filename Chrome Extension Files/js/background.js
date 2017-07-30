@@ -105,7 +105,8 @@ function third() {
 
 function fourth(){
 	if (status == "Enabled" || (enabled === true && status != "Disabled")){
-		cssInject();
+		Drc_inject.injectStyle(Model.defaults);
+		Drc_inject.mark(document.body);
 	}
 	else {
 		cssRemove();
@@ -135,4 +136,3 @@ chrome.tabs.onActivated.addListener(function() {
 
 	first();
 });
-

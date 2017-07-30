@@ -39,6 +39,7 @@ function checkStatus() {
 
 	if (status == "Enabled" || (enabled === true && status != "Disabled")){
 		saveDomainValues();
+		Drc_inject.injectStyle(Model.defaults);
 		cssInject();
 	}
 	else {

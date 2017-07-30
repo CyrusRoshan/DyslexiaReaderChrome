@@ -1,61 +1,91 @@
 <!doctype html>
 <html>
-	<head>
-		<title>DRC Options</title>
-		<script src="js/jquery-2.1.4.min.js"></script>
-		<script src="js/options.js"></script>
-		<style>
-			body{
-				width: 400px;
-			}
 
-			label{
-				margin-left: 5px;
-				height: 10px;
-			}
-			li{
-				margin-bottom: 3px;
-			}
-		</style>
-	</head>
-	<body>
-		<div class="mainContainer">
-			<div class="optionContainer">
-				<h2>Basic Preferences:</h2>
-				<form>
-					<ul>
-						<li class="listItem">Font Family<label for="fontFamily"><input type="text" name="fontFamily" class="fontFamily" id="fontFamily" value="" placeholder="Default is Courier"><br></label></li>
-						<li class="listItem">Font Size<label for="fontSize"><input type="text" name="fontSize" class="fontSize" id="fontSize" value="" placeholder="Default is 18pt"><br></label></li>
-						<li class="listItem">Background Color<label for="backgroundColor"><input type="text" name="backgroundColor" class="backgroundColor" id="backgroundColor" value="" placeholder="Default is #fdfcfd"><br></label></li>
-						<li class="listItem">Line Height<label for="lineHeight"><input type="text" name="lineHeight" class="lineHeight" id="lineHeight" value="" placeholder="Default is 1.5"><br></label></li>
-						<li class="listItem">Text Color<label for="color"><input type="text" name="color" class="color" id="color" value="" placeholder="Default is #000000"><br></label></li>
-						<li class="listItem">Change button icon (on browser bar) on enable/disable<label id="iconColorHolder" for="iconColor"><input type="checkbox" name="iconColor" class="checkbox iconColor" id="iconColor" value="iconColor"></label><br></li>
-					</ul>
-				</form>
-			</div>
-			<div class="textContainer">
-				<h2>Advanced:</h2>
-				<form>
-					<ul>
-						<li class="listItem">Forcefully override website styling<label id="forceInjectHolder" for="forceInject"><input type="checkbox" name="forceInject" class="checkbox forceInject" id="forceInject" value="forceInject"></label><br></li>
-					</ul>
-				</form>
-			</div>
-			<div class="dataContainer">
-				<h2>Website Data:</h2>
-				<ul>
-					<div id="enabledSites"></div>
-					<div id="disabledSites"></div>
-				</ul>
-			</div>
+<head>
+  <title>DRC Options</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="js/jquery-2.1.4.min.js"></script>
+  <script src="js/options.js"></script>
+  <style>
+    body {
+      width: 400px;
+    }
 
-			<div class="buttonContainer">
-				<h2>Reset Buttons:</h2>
-				<button id="resetPref" style="margin-right: 5px" type="button">Reset Preferences</button>
-				<button id="resetData" type="button">Reset Website Data</button>
-			</div>
+    label {
+      margin-left: 5px;
+      height: 10px;
+    }
 
-			<h5>These options will autosave. Leave value blank for no injected styling of that type. Advanced options may break some webpages.
-			</h5>
-			</body>
-		</html>
+    li {
+      margin-bottom: 3px;
+    }
+
+    .checkBox {
+      width: 2em;
+      height: 2em;
+      display: inline;
+    }
+
+    .mainContainer {
+      margin-left: 15px;
+      margin-right: 15px;
+    }
+
+    input {
+      margin-bottom: 10px;
+    }
+  </style>
+  <link rel="stylesheet" href="css/pure-release-1.0.0/pure-min.css" type="text/css" />
+  <link rel="stylesheet" href="css/pure-release-1.0.0/forms-min.css" type="text/css" />
+</head>
+
+<body>
+  <div class="mainContainer">
+    <div class="optionContainer">
+      <form class="pure-form">
+        <fieldset>
+          <legend>Basic Preferences:</legend>
+          <label for="fontFamily">Font family</label>
+          <input type="text" name="fontFamily" class="fontFamily pure-input-1" id="fontFamily" value="" placeholder="Default is Courier">
+          <label style="display: inline" for="fontSize">Font Size Adjust:</label>
+          <span id="fontSizeDisplay"></span>
+          <input type="range" name="fontSize" class="fontSize pure-input-1" id="fontSize" value="" min="100" max="250" step="5">
+          <label for="backgroundColor">Background Color</label>
+          <input type="text" name="backgroundColor" class="backgroundColor pure-input-1" id="backgroundColor" value="" placeholder="Default is #fdfcfd">
+          <label for="lineHeight">Line Height</label>
+          <input type="text" name="lineHeight" class="lineHeight pure-input-1" id="lineHeight" value="" placeholder="Default is 1.5">
+          <label for="color">Text Color</label>
+          <input type="text" name="color" class="color pure-input-1" id="color" value="" placeholder="Default is #000000">
+          <div>
+            <input type="checkbox" name="iconColor" class="checkbox iconColor" id="iconColor" value="iconColor">
+            <label style="display: inline" id="iconColorHolder" for="iconColor">Change button icon (on browser bar) on enable/disable</label>
+          </div>
+          <div>
+            <input type="checkbox" name="forceInject" class="checkbox forceInject" id="forceInject" value="forceInject">
+            <label style="display: inline" for="forceInject">Forcefully override website styling</label>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+    <div class="dataContainer">
+      <h2>Website Data:</h2>
+      <ul>
+        <div id="enabledSites"></div>
+        <div id="disabledSites"></div>
+      </ul>
+    </div>
+
+    <div class="buttonContainer">
+      <h2>Reset Buttons:</h2>
+      <button id="resetPref" style="margin-right: 5px" type="button">Reset Preferences</button>
+      <button id="resetData" type="button">Reset Website Data</button>
+    </div>
+
+    <h5>
+      These options will autosave. Leave value blank for no injected styling of that type. Advanced
+      options may break some webpages.
+    </h5>
+  </div>
+</body>
+
+</html>
