@@ -1,6 +1,6 @@
 type t = {
   fontFamily: string,
-  fontSize: Browser_dim.t,
+  fontSizeAdjust: float,
   backgroundColor: Color.t,
   color: Color.t,
   lineHeight: Browser_dim.t,
@@ -13,12 +13,12 @@ type t = {
 
 let defaults = {
   fontFamily: "Courier ",
-  fontSize: Browser_dim.Pt 18.0,
+  fontSizeAdjust: 1.75,
   backgroundColor: Color.from_ints 0xfd 0xfc 0xfd 0xff,
   lineHeight: Browser_dim.None 1.5,
   color: Color.{r: 0.0, g: 0.0, b: 0.0, a: 1.0},
   enabled: true,
-  forceInject: false,
+  forceInject: true,
   iconColorChecked: false,
   domains: [],
   isInitialized: true

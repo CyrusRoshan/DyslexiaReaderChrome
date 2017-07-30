@@ -13,9 +13,9 @@ let from_ints r g b a => {
 };
 
 let toString t => {
-  let r = string_of_float t.r;
-  let g = string_of_float t.g;
-  let b = string_of_float t.b;
-  let a = string_of_float t.a;
+  let r = Printf.sprintf "%03d" (int_of_float (t.r *. 255.0));
+  let g = Printf.sprintf "%03d" (int_of_float (t.g *. 255.0));
+  let b = Printf.sprintf "%03d" (int_of_float (t.b *. 255.0));
+  let a = Printf.sprintf "%03d" (int_of_float (t.a *. 255.0));
   "rgba(" ^ r ^ "," ^ g ^ "," ^ b ^ "," ^ a ^ ")"
 };

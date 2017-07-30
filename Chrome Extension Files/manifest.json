@@ -19,18 +19,28 @@
 		"activeTab",
 		"tabs",
 		"storage",
+    "http://*/",
 		"<all_urls>"
 	],
 
 	"background": {
-		"scripts": ["js/background.js", "js/inject.js", "js/jquery-2.1.4.min.js", "js/Drc_inject.js", "js/Model.js"],
+		"scripts": ["js/background.js", "js/inject.js", "js/jquery-2.1.4.min.js", "js/Drc_inject.js", "js/Model.js", "js/Ocr.js"],
 		"persistent": true
 	},
+
+  "content_scripts": [
+    {
+      "matches": ["http://*/*"],
+      "js": ["js/Model.js", "js/Drc_inject.js"]
+    }
+  ],
 
 	"options_ui": {
 		"page": "options.html",
 		"chrome_style": true
 	},
 
-	"manifest_version": 2
+	"manifest_version": 2,
+
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
 }
