@@ -105,7 +105,10 @@ function third() {
 
 function fourth(){
 	if (status == "Enabled" || (enabled === true && status != "Disabled")){
-		cssInject();
+		//Drc_inject.injectStyle(Model.defaults);
+    //chrome.tabs.executeScript(null, {file: 'js/Model.js'});
+    chrome.tabs.executeScript(null, {file: 'js/Drc_inject.js'});
+    //chrome.tabs.executeScript({code: 'Drc_inject.mark(Model.defaults, document.body);'})
 	}
 	else {
 		cssRemove();
@@ -113,7 +116,49 @@ function fourth(){
 }
 //above code calls functions responsible for changing styling
 
-chrome.runtime.onMessage.addListener(function(message) {
+chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
+  console.log("Handling a message: ", message);
+  if (message.ocr !== undefined) {
+    console.log("Got an OCR request: ", message.ocr);
+    var toDataUrl = function(url, callback){
+      var xhr = new XMLHttpRequest();
+      xhr.open('get', url);
+      xhr.responseType = 'blob';
+      xhr.onload = function(){
+        var fr = new FileReader();
+        fr.onload = function(){
+          callback(this.result);
+        };
+      fr.readAsDataURL(xhr.response); // async call
+      };
+      xhr.send();
+    };
+    toDataUrl(message.ocr.url, function(data) {
+      var img = document.createElement('img');
+      img.src = data;
+      img.width = message.ocr.width;
+      img.height = message.ocr.height;
+      var canvas = document.createElement('canvas');
+      canvas.width = img.width;
+      canvas.height = img.height;
+      var ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0, img.width, img.height);
+      console.log("About to call OCR...");
+      Ocr.ocr(
+        ctx.getImageData(0, 0, img.width, img.height),
+        message.ocr.url,
+        (x) => {
+          console.log("Bg script is sending a response: ", x);
+          try {
+            sendResponse(x);
+          } catch (exn) {
+            console.log("Exception: ", exn);
+          }
+        });
+      return true;
+    });
+    return true;
+  }
 	if (message.modified === true && window.timeup === true) {
 		window.timeup = false;
 		window.timeup = true;
@@ -135,4 +180,3 @@ chrome.tabs.onActivated.addListener(function() {
 
 	first();
 });
-

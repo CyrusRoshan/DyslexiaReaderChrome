@@ -1,0 +1,17 @@
+####{BSB GENERATED: NO EDIT
+FLG -ppx '/home/chrismamo1/programming/DyslexiaReaderChrome/re/node_modules/bs-platform/bin/reactjs_jsx_ppx_2.exe'
+FLG -ppx /home/chrismamo1/programming/DyslexiaReaderChrome/re/node_modules/bs-platform/bin/bsppx.exe
+S /home/chrismamo1/programming/DyslexiaReaderChrome/re/node_modules/bs-platform/lib/ocaml
+B /home/chrismamo1/programming/DyslexiaReaderChrome/re/node_modules/bs-platform/lib/ocaml
+FLG -nostdlib -no-alias-deps -color always -w -40+6+7+27+32..39+44+45
+S /home/chrismamo1/programming/DyslexiaReaderChrome/re/node_modules/reason-react/lib/ocaml
+B /home/chrismamo1/programming/DyslexiaReaderChrome/re/node_modules/reason-react/lib/ocaml
+S /home/chrismamo1/programming/DyslexiaReaderChrome/re/node_modules/bs-director/lib/ocaml
+B /home/chrismamo1/programming/DyslexiaReaderChrome/re/node_modules/bs-director/lib/ocaml
+S /home/chrismamo1/programming/DyslexiaReaderChrome/re/node_modules/bs-jest/lib/ocaml
+B /home/chrismamo1/programming/DyslexiaReaderChrome/re/node_modules/bs-jest/lib/ocaml
+S src
+B lib/bs/src
+S src/components
+B lib/bs/src/components
+####BSB GENERATED: NO EDIT}
