@@ -22,36 +22,61 @@ module Word = {
   };
   let insertInto t container => {
     let box = t.bBox;
-    let h = box.y1 -. box.y0;
-    let w = box.x1 -. box.x0;
-    let fontSize = Browser_dim.(Infix.( *. ) (fromString t.fontSize) 2.5);
-    Js.log2 "Font size: " (Browser_dim.toString fontSize);
+    let w = Bbox.getWidth box;
+    let fontSize = Browser_dim.(Infix.( *. ) (fromString t.fontSize) 3.0);
+    Js.log2 "Font size: " fontSize;
     let el = Drc_dom.(createElement document "div");
     Drc_dom.(setInnerHTML el t.text);
     Js.log2 "Inserting: " el;
     ignore (Drc_dom.appendChild container el);
-    Js.log "Inserting a word...";
+    Js.log2 "Inserting a word: " t;
+    Js.log2 "Word's bounding box is: " (Bbox.toString t.bBox);
     Drc_dom.(Style.set (getStyle el)) "position" "absolute";
     Drc_dom.(Style.set (getStyle el)) "text-align" "center";
-    Drc_dom.(Style.set (getStyle el)) "display" "inline-block";
+    Drc_dom.(Style.set (getStyle el)) "display" "inline";
     Drc_dom.(Style.set (getStyle el)) "font-size" (Browser_dim.toString fontSize);
+    Js.log2 "Setting font size:" (Browser_dim.toString fontSize);
     let title = Printf.sprintf "\"%s\": %f%% confidence" t.text t.confidence;
     Drc_dom.setTitle el title;
-    let elStyle = Drc_dom.getComputedStyle el;
-    let h' =
-      switch (Browser_dim.fromString (Drc_dom.Style.get elStyle "height")) {
+    let containerStyle = Drc_dom.getComputedStyle container;
+    let cW =
+      switch (Browser_dim.fromString (Drc_dom.Style.get containerStyle "width")) {
       | Px x => x
-      | _ => raise (Failure "Height should be in px")
+      | _ => raise (Failure "Width should be in px")
       };
+    let elStyle = Drc_dom.getComputedStyle el;
+    let w' =
+      switch (Browser_dim.fromString (Drc_dom.Style.get elStyle "width")) {
+      | Px x => x
+      | _ => raise (Failure "Width should be in px")
+      };
+    Js.log2 "w': " w';
     let (top, left) = {
-      open Browser_dim;
-      let t = box.y0 +. abs_float (h -. h') /. 2.0;
+      let t = box.y0;
       let l = box.x0;
-      (Px t, Px l)
+      (t, l)
     };
-    Drc_dom.(Style.set (getStyle el)) "top" (Browser_dim.toString top);
-    Drc_dom.(Style.set (getStyle el)) "left" (Browser_dim.toString left);
-    Drc_dom.(Style.set (getStyle el)) "min-width" (string_of_float w ^ "px");
+    let (left, w'') =
+      if (w' > cW) {
+        let factor = cW /. w';
+        Drc_dom.Style.set
+          (Drc_dom.getStyle el) "font-size" Browser_dim.(toString (Infix.( *. ) fontSize factor));
+        (0.0, w' *. factor)
+      } else if (
+        w' +. left > cW
+      ) {
+        let factor = cW /. (w' +. left);
+        Drc_dom.Style.set
+          (Drc_dom.getStyle el) "font-size" Browser_dim.(toString (Infix.( *. ) fontSize factor));
+        let w'' = w' *. factor;
+        Js.log2 "w'': " w'';
+        (left -. (w'' +. left -. cW), w'')
+      } else {
+        (left, w)
+      };
+    Drc_dom.(Style.set (getStyle el)) "top" Browser_dim.(toString (Px top));
+    Drc_dom.(Style.set (getStyle el)) "left" Browser_dim.(toString (Px left));
+    Drc_dom.(Style.set (getStyle el)) "width" (string_of_float w'' ^ "0px");
     /* interactivity */
     Drc_dom.(Class_list.(add (classList el) "drcOcrExtractedTextOverlay"));
     Drc_dom.(Class_list.(add (classList el) "drcExempt"))
@@ -85,6 +110,7 @@ let ocr
     (imageName: string)
     (callback: ocrResponse 'a => unit)
     :bool => {
+  ignore imageName;
   let getOverallAvg: Drc_dom.Image_data.image_data => float = [%bs.raw
     {|
     function(data) {
@@ -122,7 +148,7 @@ let ocr
   }
   |}
   ];
-  Js.log3 "(overallAvg, imageName): " (getOverallAvg imageData) imageName;
+  Js.log2 "(overallAvg): " (getOverallAvg imageData);
   grayScale (getOverallAvg imageData) imageData;
   let w = Drc_dom.Image_data.width imageData;
   let h = Drc_dom.Image_data.height imageData;

@@ -4,7 +4,8 @@ module.exports = {
     "Model": "./model.js",
     "Drc_inject": "./drc_inject.js",
     "Ocr": "./ocr.js",
-    "Browser_dim": "./browser_dim.js"
+    "Browser_dim": "./browser_dim.js",
+    "Drc_options": "./drc_options.js"
   },
   output: {
     library: "[name]",

@@ -19,6 +19,7 @@
   "license": "ISC",
   "devDependencies": {
     "babel-cli": "^6.24.1",
+    "browserify": "^14.4.0",
     "bs-director": "0.0.4",
     "bs-jest": "^0.1.0",
     "bs-platform": "^1.8.1",

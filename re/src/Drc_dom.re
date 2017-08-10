@@ -43,6 +43,14 @@ module Style = {
   external get : style => string => string = "" [@@bs.get_index];
   external set : style => string => string => unit = "" [@@bs.set_index];
   external cssText : style => string = "cssText" [@@bs.get];
+  module Transform = {
+    let scale style hScale vScale => {
+      let oldTransformations = get style "transform";
+      let tString = Printf.sprintf "%s scale(%.02f, %.02f)" oldTransformations hScale vScale;
+      set style "transform" tString;
+      set style "-webkit-transform" tString
+    };
+  };
 };
 
 module Class_list = {
@@ -98,6 +106,10 @@ external setTitle : dom => string => unit = "title" [@@bs.set];
 
 /* Event Handlers */
 external doOnLoad : dom => ('a => 'b) => unit = "onload" [@@bs.set];
+
+external doOnInput : dom => ('a => 'b) => unit = "oninput" [@@bs.set];
+
+external doOnBlur : dom => ('a => 'b) => unit = "onblur" [@@bs.set];
 
 let replaceInPlace target el => {
   Js.log2 "Trying to replace " target;
@@ -160,6 +172,11 @@ module Image_data = {
     };
     !s
   };
+};
+
+module Input = {
+  type input = dom;
+  external getValue : input => 'a = "value" [@@bs.get];
 };
 
 module Canvas = {

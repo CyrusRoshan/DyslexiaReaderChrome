@@ -1,0 +1,1 @@
+let containsAlpha: string => bool;

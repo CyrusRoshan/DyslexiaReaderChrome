@@ -12,4 +12,6 @@ S /home/chrismamo1/programming/DyslexiaReaderChrome/re/node_modules/bs-jest/lib/
 B /home/chrismamo1/programming/DyslexiaReaderChrome/re/node_modules/bs-jest/lib/ocaml
 S src
 B lib/bs/src
+S src/components
+B lib/bs/src/components
 ####BSB GENERATED: NO EDIT}

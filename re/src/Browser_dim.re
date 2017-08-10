@@ -23,17 +23,10 @@ let fromString s => {
   try (
     Scanf.sscanf
       s
-      "%d.%d%s"
+      "%f%s"
       (
-        fun h l delim' => {
-          let l' = float_of_int l;
-          let l'' =
-            switch (l' /. exp (log 10.0 *. ceil (log10 l'))) {
-            | x when x == nan => 0.0
-            | x => x
-            };
-          Js.log2 "l'':" l'';
-          f := float_of_int h +. l'';
+        fun f' delim' => {
+          f := f';
           delim := delim'
         }
       )

@@ -16,7 +16,7 @@ let injectStyle (state: Model.t) => {
     Color.toString state.backgroundColor ^
     important ^
     "; line-height: " ^
-    Browser_dim.toString state.lineHeight ^
+    state.lineHeight ^
     important ^
     "; color: " ^
     Color.toString state.color ^
@@ -31,7 +31,7 @@ let injectStyle (state: Model.t) => {
 .drcOcrExtractedTextOverlay:hover {
   color: rgba(0, 0, 0, 0);
   background-color: rgba(0, 0, 0, 0);
-  box-shadow: 0 0 10px black;
+  box-shadow: inset 0 0 0.05em black;
 }
 
 .drcOcrExtractedTextOverlay {
@@ -70,7 +70,21 @@ let rec mark explicitlyPositioned state el => {
     let kids = Drc_dom.children el;
     Drc_dom.Html_collection.length kids == 0
   };
-  let isImage el => String.lowercase (Drc_dom.tagName el) == "img";
+  let isImage el => {
+    let isImageTag = String.lowercase (Drc_dom.tagName el) == "img";
+    /*let hasImageBackground = {
+        let elStyle = Drc_dom.getStyle el;
+        let bgImage = Drc_dom.Style.get elStyle "background-image";
+        if (String.length bgImage > 1 && String.compare bgImage "initial" != 0) {
+          if (String.lowercase (Drc_dom.tagName el) == "a") {
+            Js.log2 "Found 'a' element with bg image: " bgImage;
+            Js.log2 "BG: " (Drc_dom.Style.get elStyle "background")
+          }
+        }
+      };*/
+    isImageTag
+  };
+  ignore (isImage el);
   if (
     isImage el &&
     Drc_dom.(getArbitraryProperty el "width" != 0 && getArbitraryProperty el "height" != 0)
@@ -95,7 +109,7 @@ let rec mark explicitlyPositioned state el => {
                   Js.log2 "Get response: " resp;
                   let text = resp.Ocr.text;
                   let confidence = resp.Ocr.confidence;
-                  if (confidence >= 45.0) {
+                  if (confidence >= 45.0 && Stringy.containsAlpha resp.Ocr.text) {
                     /*let canvas = Drc_dom.(createElement document "canvas");
                       Drc_dom.(setArbitraryProperty canvas "width" w);
                       Drc_dom.(setArbitraryProperty canvas "height" h);
@@ -115,16 +129,17 @@ let rec mark explicitlyPositioned state el => {
                     Drc_dom.(Style.set (getStyle extracted)) "background-image" bgUrl;
                     Drc_dom.(Style.set (getStyle extracted) "background-size" "cover");
                     let dropZone = {
-                      let el = Drc_dom.(createElement document "div");
-                      Drc_dom.(Style.set (getStyle el)) "width" (w ^ "px");
-                      Drc_dom.(Style.set (getStyle el)) "height" (h ^ "px");
-                      Drc_dom.(Style.set (getStyle el)) "margin" "0";
-                      Drc_dom.(Style.set (getStyle el)) "padding" "0";
-                      Drc_dom.(Style.set (getStyle el)) "backgroundColor" "rgba(255,255,255,0.0)";
-                      Drc_dom.(Style.set (getStyle el)) "position" "absolute";
-                      Drc_dom.(Class_list.(add (classList el) "drcExempt"));
-                      Js.log2 "dropZone: " el;
-                      el
+                      let el' = Drc_dom.(createElement document "div");
+                      Drc_dom.(Style.set (getStyle el')) "width" (w ^ "px");
+                      Drc_dom.(Style.set (getStyle el')) "height" (h ^ "px");
+                      Drc_dom.(Style.set (getStyle el')) "margin" "0";
+                      Drc_dom.(Style.set (getStyle el')) "padding" "0";
+                      Drc_dom.(Style.set (getStyle el')) "backgroundColor" "rgba(255,255,255,0.0)";
+                      Drc_dom.(Style.set (getStyle el')) "position" "absolute";
+                      Drc_dom.(Class_list.(add (classList el') "drcExempt"));
+                      Drc_dom.(setArbitraryProperty el' "title" (getArbitraryProperty el "title"));
+                      Js.log2 "dropZone: " el';
+                      el'
                     };
                     try Drc_dom.(replaceInPlace el extracted) {
                     | exn => Js.log2 "Something went fucky while trying to replace an image: " exn
@@ -133,7 +148,10 @@ let rec mark explicitlyPositioned state el => {
                     Array.iter
                       (
                         fun word =>
-                          if (word.Ocr.Word.confidence >= 67.5) {
+                          if (
+                            word.Ocr.Word.confidence >= 67.5 &&
+                            Stringy.containsAlpha word.Ocr.Word.text
+                          ) {
                             ignore (Ocr.Word.insertInto word dropZone)
                           }
                       )
@@ -192,7 +210,9 @@ let rec mark explicitlyPositioned state el => {
   List.iter (mark false state) (Drc_dom.Html_collection.toList kids)
 };
 
-injectStyle Model.defaults;
+Model.load injectStyle;
+
+Js.log "Done injecting.";
 
 mark false Model.defaults Drc_dom.body;
 

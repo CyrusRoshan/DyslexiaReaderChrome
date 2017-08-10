@@ -14,3 +14,9 @@ type t = {
 };
 
 let ofRepr r => {x0: Repr.x0 r, x1: Repr.x1 r, y0: Repr.y0 r, y1: Repr.y1 r};
+
+let toString t => Printf.sprintf "x0: %.02f, y0: %.02f, x1: %.02f, y1: %.02f" t.x0 t.y0 t.x1 t.y1;
+
+let getWidth t => abs_float (t.x1 -. t.x0);
+
+let getHeight t => abs_float (t.y1 -. t.y0);
