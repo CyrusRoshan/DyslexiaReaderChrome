@@ -2,7 +2,7 @@
 	"name": "Dyslexia Reader Chrome",
 	"short_name": "DRC",
 	"description": "Change webpage styling for better readability",
-	"version": "4.0.0",
+	"version": "5.0.0",
 
 	"action": {
 		"default_icon": "images/icon.png",
