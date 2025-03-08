@@ -4,7 +4,7 @@
 	"description": "Change webpage styling for better readability",
 	"version": "4.0.0",
 
-	"browser_action": {
+	"action": {
 		"default_icon": "images/icon.png",
 		"default_popup": "popup.html"
 	},
@@ -19,18 +19,21 @@
 		"activeTab",
 		"tabs",
 		"storage",
+		"scripting"
+	],
+
+	"host_permissions": [
 		"<all_urls>"
 	],
 
 	"background": {
-		"scripts": ["js/background.js", "js/inject.js", "js/jquery-2.1.4.min.js"],
-		"persistent": true
+		"service_worker": "js/background.js",
+		"type": "module"
 	},
 
 	"options_ui": {
-		"page": "options.html",
-		"chrome_style": true
+		"page": "options.html"
 	},
 
-	"manifest_version": 2
+	"manifest_version": 3
 }

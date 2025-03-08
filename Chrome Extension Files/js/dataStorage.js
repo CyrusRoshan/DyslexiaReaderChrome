@@ -16,6 +16,8 @@ function saveDomainValues(domain, status) {
 	}
 	//saves the value to sync if the value for the current domain is "disabled"
 	//otherwise it just removes the value to save sync.storage space since it defaults to "enabled"
+
+  chrome.runtime.sendMessage("update");
 }
 
 function saveAndLog(domain, status) {
@@ -28,6 +30,7 @@ function saveAndLog(domain, status) {
 	}
 	else {
 		delete dataStorage[domain];
+    console.error('DOMAIN', domain)
 		chrome.storage.sync.remove(domain, function(){
 			loadDomainValues();
 		});
@@ -81,12 +84,14 @@ function configureDomainValues() {
 
 function saveDomain(status, saveDomainValues){
 
-	chrome.tabs.getSelected(function (tabs) {
+	getSelected(function (tabs) {
 		var url = tabs.url;
 		var split = url.split("/");
 		domain = split[1] + split[2];
 		window.status = status;
 		window.domain = domain;
+
+    console.log('URL', url, tabs)
 		saveAndLog(domain, status);
 	});
 	//saves the current domain and its value (enabled/disabled)

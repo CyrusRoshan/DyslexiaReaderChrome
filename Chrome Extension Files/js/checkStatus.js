@@ -5,9 +5,6 @@ function checkStatus() {
 		});
 	});
 	if (enabled === true) {
-		if(iconColorChecked){
-			chrome.browserAction.setIcon({path: "images/enabled.png"});
-		}
 		currentStatus = true;
 		$(".status").html("Enabled");
 		$(".statusContainer").css("background-color", "rgb(24, 150, 71)");
@@ -16,9 +13,6 @@ function checkStatus() {
 		$(".domain").html("on " + window.domain);
 	}
 	else if (enabled === false) {
-		if(iconColorChecked){
-			chrome.browserAction.setIcon({path: "images/disabled.png"});
-		}
 		currentStatus = false;
 		$(".status").html("Disabled");
 		$(".statusContainer").css("background-color", "rgb(102, 102, 102)");
@@ -35,15 +29,6 @@ function checkStatus() {
 	}
 	else if ( status == "Neither") {
 		Neither.checked = true;
-	}
-
-	if (status == "Enabled" || (enabled === true && status != "Disabled")){
-		saveDomainValues();
-		cssInject();
-	}
-	else {
-		saveDomainValues();
-		cssRemove();
 	}
 
 	saveDomainValues();
